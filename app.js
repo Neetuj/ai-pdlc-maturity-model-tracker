@@ -11,6 +11,29 @@ const stageOptions = [
   'Lead & Run the Org'
 ];
 
+const defaultCapabilityLibrary = [
+  { stage: 'Discover & Plan', name: 'Customer research' },
+  { stage: 'Discover & Plan', name: 'Roadmap prioritization' },
+  { stage: 'Discover & Plan', name: 'Business case / ROI analysis' },
+  { stage: 'Define & Design', name: 'PRD drafting' },
+  { stage: 'Define & Design', name: 'Architecture & design reviews' },
+  { stage: 'Define & Design', name: 'Dependency & cross-team risk mapping' },
+  { stage: 'Build & Validate', name: 'AI-assisted coding' },
+  { stage: 'Build & Validate', name: 'Test creation & automation' },
+  { stage: 'Build & Validate', name: 'Release readiness checks' },
+  { stage: 'Release & Customer Adoption', name: 'Customer onboarding & configuration' },
+  { stage: 'Release & Customer Adoption', name: 'Release planning & coordination' },
+  { stage: 'Release & Customer Adoption', name: 'Training & enablement' },
+  { stage: 'Operate, Support & Resilience', name: 'Incident detection & management' },
+  { stage: 'Operate, Support & Resilience', name: 'Support ticket triage' },
+  { stage: 'Operate, Support & Resilience', name: 'Capacity & performance engineering' },
+  { stage: 'Learn & Optimize', name: 'Product & usage analytics' },
+  { stage: 'Learn & Optimize', name: 'Customer feedback synthesis' },
+  { stage: 'Lead & Run the Org', name: 'Capacity & budget planning' },
+  { stage: 'Lead & Run the Org', name: 'Executive / stakeholder reporting' },
+  { stage: 'Lead & Run the Org', name: 'Vendor management' }
+];
+
 const defaultState = [
   {
     id: 'customer-research',
@@ -406,7 +429,11 @@ function renderHeatmap() {
 
   stages.forEach((stage) => {
     const relevantRows = scopeRows.filter((item) => item.stage === stage && item.included !== false);
-    const capabilityNames = relevantRows.map((item) => item.capability).filter(Boolean);
+    const stageLibraryNames = defaultCapabilityLibrary
+      .filter((capability) => capability.stage === stage)
+      .map((capability) => capability.name);
+    const rowCapabilityNames = relevantRows.map((item) => item.capability).filter(Boolean);
+    const stageCapabilities = [...new Set([...stageLibraryNames, ...rowCapabilityNames])];
 
     const uniqueCapabilityEntries = {};
     relevantRows.forEach((row) => {
@@ -418,14 +445,15 @@ function renderHeatmap() {
       uniqueCapabilityEntries[normalized].push(Number(row.currentMaturity || 1));
     });
 
-    const stageCapabilities = Object.keys(uniqueCapabilityEntries);
-    const averagedCapabilities = stageCapabilities.map((name) => {
-      const avg = uniqueCapabilityEntries[name].reduce((sum, value) => sum + value, 0) / uniqueCapabilityEntries[name].length;
-      return { name, avg };
-    });
+    const averagedCapabilities = stageCapabilities
+      .filter((name) => uniqueCapabilityEntries[name])
+      .map((name) => {
+        const avg = uniqueCapabilityEntries[name].reduce((sum, value) => sum + value, 0) / uniqueCapabilityEntries[name].length;
+        return { name, avg };
+      });
 
-    const capabilityText = averagedCapabilities.length ? averagedCapabilities.slice(0, 3).map((item) => item.name).join(' • ') : 'No mapped capabilities';
-    const extraCount = averagedCapabilities.length > 3 ? ` +${averagedCapabilities.length - 3} more` : '';
+    const capabilityText = stageCapabilities.length ? stageCapabilities.slice(0, 3).join(' • ') : 'No mapped capabilities';
+    const extraCount = stageCapabilities.length > 3 ? ` +${stageCapabilities.length - 3} more` : '';
 
     cells.push(`
       <div class="heatmap-stage">
@@ -437,7 +465,10 @@ function renderHeatmap() {
     const assessedRows = relevantRows.filter((item) => item.status && item.status !== 'Not assessed' && item.status !== 'N/A');
 
     if (assessedRows.length === 0) {
-      levels.forEach(() => cells.push('<div class="heatmap-cell no-data">NA</div>'));
+      levels.forEach((level) => {
+        const label = `Stage not assessed — ${stageCapabilities.join(', ') || 'No mapped capabilities'}`;
+        cells.push(`<div class="heatmap-cell no-data" title="${label}">—</div>`);
+      });
       return;
     }
 
