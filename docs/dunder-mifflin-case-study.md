@@ -31,41 +31,41 @@ Below is what each leader sees in their local view before the aggregate org view
 
 ### Pam Beesly — Org Leader, X
 
-| Capability | Scope | Current | Target | Status | Priority |
-| --- | --- | --- | --- | --- | --- |
-| Customer onboarding & configuration | Team-specific | L2 | L4 | Piloting | P1 |
-| Support ticket triage | Central | L2 | L4 | Piloting | P0 |
-| Customer feedback synthesis | Hybrid | L1 | L3 | Not started | P0 |
+| Stage | Capability | Scope | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Release & Customer Adoption | Customer onboarding & configuration | Team-specific | L2 | L4 | Piloting | P1 |
+| Operate, Support & Resilience | Support ticket triage | Central | L2 | L4 | Piloting | P0 |
+| Learn & Optimize | Customer feedback synthesis | Hybrid | L1 | L3 | Not started | P0 |
 
 Pam leads the customer operations business unit. That org includes service, onboarding, customer support, and experience-related teams. Her job is not to optimize one narrow function; it is to run the full customer-facing operating model and make sure work moves smoothly across the customer journey.
 
 ### Jim Halpert — Org Leader, Y
 
-| Capability | Scope | Current | Target | Status | Priority |
-| --- | --- | --- | --- | --- | --- |
-| AI-assisted coding | Team-specific | L2 | L4 | Piloting | P0 |
-| Requirements & PRD drafting | Central | L2 | L3 | Not started | P1 |
-| Test creation & automation | Hybrid | L2 | L4 | Piloting | P0 |
+| Stage | Capability | Scope | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build & Validate | AI-assisted coding | Team-specific | L2 | L4 | Piloting | P0 |
+| Define & Design | Requirements & PRD drafting | Central | L2 | L3 | Not started | P1 |
+| Build & Validate | Test creation & automation | Hybrid | L2 | L4 | Piloting | P0 |
 
 Jim leads the product and delivery org, which includes product, engineering, QA, release, and delivery teams. He is accountable for the full value stream, not just the engineering function. His focus is on capability maturity across planning, delivery, and execution.
 
 ### Dwight Schrute — Org Leader, Z
 
-| Capability | Scope | Current | Target | Status | Priority |
-| --- | --- | --- | --- | --- | --- |
-| Warehouse workflow optimization | Team-specific | L1 | L3 | Not started | P0 |
-| Incident detection & management | Central | L2 | L4 | Piloting | P0 |
-| SLA / SLO tracking | Hybrid | L2 | L3 | Piloting | P1 |
+| Stage | Capability | Scope | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Discover & Plan | Warehouse workflow optimization | Team-specific | L1 | L3 | Not started | P0 |
+| Operate, Support & Resilience | Incident detection & management | Central | L2 | L4 | Piloting | P0 |
+| Operate, Support & Resilience | SLA / SLO tracking | Hybrid | L2 | L3 | Piloting | P1 |
 
 Dwight leads the service operations business unit, covering service continuity, field execution, escalation paths, and operational recovery. His org must make service work reliable across many local teams while still allowing the business to adapt to context-specific operational realities.
 
 ### Angela Martin — Org Leader, W
 
-| Capability | Scope | Current | Target | Status | Priority |
-| --- | --- | --- | --- | --- | --- |
-| Security reviews | Central | L2 | L4 | Piloting | P0 |
-| Root cause analysis / post-incident review | Central | L2 | L4 | Piloting | P0 |
-| Vendor risk management | Team-specific | L1 | L3 | Not started | P1 |
+| Stage | Capability | Scope | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Build & Validate | Security reviews | Central | L2 | L4 | Piloting | P0 |
+| Operate, Support & Resilience | Root cause analysis / post-incident review | Central | L2 | L4 | Piloting | P0 |
+| Lead & Run the Org | Vendor risk management | Team-specific | L1 | L3 | Not started | P1 |
 
 Angela leads the risk, controls, and compliance org. That includes governance, policy, audit, vendor oversight, and risk management functions. Her leadership scope spans controls and operational safeguards across the enterprise, not just a single technical specialty.
 
@@ -89,14 +89,14 @@ This is exactly how the heatmap should behave in the product: the default state 
 
 Michael sees the aggregate view, not a fragmented collection of team responses. The tracker consolidates the assessment into a clearer operating picture.
 
-| Capability | Aggregate view | Priority | Recommended investment |
-| --- | --- | --- | --- |
-| Support ticket triage | Central | P0 | Build centrally |
-| Incident detection & management | Central | P0 | Build centrally |
-| Security reviews | Central | P0 | Centralized governance investment |
-| AI-assisted coding | Team-specific | P0 | Support team-level investment |
-| Customer onboarding & configuration | Team-specific | P1 | Local team investment |
-| SLA / SLO tracking | Hybrid | P1 | Shared framework with local execution |
+| Stage | Capability | Aggregate view | Priority | Recommended investment |
+| --- | --- | --- | --- | --- |
+| Operate, Support & Resilience | Support ticket triage | Central | P0 | Build centrally |
+| Operate, Support & Resilience | Incident detection & management | Central | P0 | Build centrally |
+| Build & Validate | Security reviews | Central | P0 | Centralized governance investment |
+| Build & Validate | AI-assisted coding | Team-specific | P0 | Support team-level investment |
+| Release & Customer Adoption | Customer onboarding & configuration | Team-specific | P1 | Local team investment |
+| Operate, Support & Resilience | SLA / SLO tracking | Hybrid | P1 | Shared framework with local execution |
 
 This is the decision pattern the tracker is meant to unlock: it helps leaders separate capabilities that should be standardized once, governed centrally, and deployed broadly from those that should remain team-owned and customized to local context.
 
