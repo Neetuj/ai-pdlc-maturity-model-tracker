@@ -1,130 +1,187 @@
 # AI-PDLC Maturity Model Tracker
 
-A shared, objective way for leaders to see where AI is actually changing how work gets done across the product development lifecycle (PDLC) — and where it's still just conversation.
+A simple way for leaders to see where AI is improving the work across the product lifecycle, where the gaps still are, and where to invest next.
 
-## The problem
+## Why this exists
 
-AI adoption gets discussed in a lot of rooms by a lot of leaders, but the conversation is largely subjective: everyone has an anecdote, nobody has a shared scale. One leader's "we're pretty advanced with AI" means something completely different from another's. Without a common maturity language, prioritization defaults to whoever tells the best story, not where the real opportunity is.
+Most teams talk about AI adoption, but they do not have a common way to measure whether it is actually improving the work. The problem is not whether people are using AI tools. The problem is whether the organization is moving from manual, slow, inconsistent work to more scalable, reliable, and customer-friendly execution.
 
-The deeper issue is that most organizations do not have a systematic way to break the AI transformation problem down into operational capabilities, measure the real outcomes they are trying to improve, and then scale what works without losing governance or quality. The result is a patchwork of pilots, isolated wins, and vague claims that "AI is helping" without clear proof of business value.
+This tracker gives leaders a shared language for that shift.
 
-## Mission
+## What it does
 
-Help leaders diagnose where AI can meaningfully improve the product development lifecycle, prioritize the highest-value capabilities, measure the real outcomes they are moving, and scale adoption in a structured, repeatable way across the organization.
+- Scores the maturity of each PDLC stage and capability from L1 to L5
+- Identifies where the highest-value AI opportunities are
+- Separates org-level defaults from team-specific capabilities
+- Tracks whether a capability is not started, piloting, or scaled
+- Measures outcomes such as cycle time, quality, customer experience, resilience, and capacity
 
-## Vision
+## Who it is for
 
-A common, evidence-based maturity model that any leader can use to score their own domain, see it alongside everyone else's, and make the case for where to invest next — replacing opinion with a shared, comparable scale. The measure of success is not whether people are using AI, but whether the work is faster, more reliable, more customer-friendly, and more scalable as the org moves from manual work toward AI-native execution.
-
-## Background
-
-Most transformation programs fail not because they lack ideas, but because they lack a way to connect AI experiments to business outcomes. Leaders know the big picture — better speed, quality, customer experience, resilience, and capacity — but they do not have a practical structure for breaking that big picture into the operational capabilities that actually create value. This tracker is designed to provide that structure: a common language for maturity, a way to identify the real bottlenecks, and a method for measuring whether portfolio-level progress is translating into business impact.
-
-## Goal
-
-Give leaders a fast way to self-assess AI maturity across every stage of the product development lifecycle, and a structured way to prioritize where AI investment will have the most impact — without requiring a full-time analyst to build the case.
-
-The current prototype also supports a richer operating model: the org defines a shared capability baseline, teams can extend it with team-specific capabilities, and leadership can filter the tracker by org, domain, team, and view to see the right slice of data at the right level.
-
-## Who it's for
-
-Leaders who own a full remit — engineering, product, delivery, CX, incidents, resilience, their own org — scoring their whole domain, not split by profession. One leader, one Org/Domain, covering all 7 PDLC stages.
-
-This includes leaders operating across multiple teams who need both a common org baseline and a local team-specific view without losing comparability.
-
-## What it solves
-
-- **Subjectivity** — replaces "I think we're doing okay with AI" with a defined 5-level maturity scale (L1 Manual → L5 AI-Native) scored against fixed anchors, so scores are comparable across leaders and orgs.
-- **Problem decomposition** — breaks the AI transformation challenge into stage-level and capability-level views so leaders can identify the exact workflow bottlenecks and business outcomes they are trying to improve, instead of debating AI in the abstract.
-- **Outcome tracking** — focuses on the real metrics that matter: cycle time, quality, customer experience, operational efficiency, support resolution, and capacity gains, not just tool usage or adoption activity.
-- **Analysis paralysis** — a two-tier model keeps the floor low (a fast pulse across all 7 stages) and the ceiling high (a full six-axis capability scoring, but only where a leader chooses to drill in).
-- **Where to invest** — a transparent priority formula (time spent × frequency × AI potential × scalability, adjusted for risk and feasibility) turns raw scores into a ranked, defensible investment shortlist instead of a gut call.
-- **Build-once-vs-leave-to-teams** — a placement model (Central / Team-Specific / Hybrid) driven by four yes/no questions, so leadership knows what's worth building centrally.
-- **Systematic scaling** — gives leaders a repeatable way to move from diagnosis to pilot to scale to measurable business value, rather than isolated AI experiments.
+Leaders across product, engineering, delivery, operations, support, and platform. One leader can assess their full remit without splitting everything by function. Moreover, the roles and functions are evolving rapidly in the age of AI and merging, but the capabilities required across the PDLC remain largely stable regardless of which professional, team, or agent performs the task.
 
 ## How it works
 
-Two tiers, both scored on the same L1–L5 maturity scale:
+1. Start with a quick Stage Pulse across all 7 PDLC stages.
+2. Identify the stages with the biggest opportunity.
+3. Drill into the relevant capabilities.
+4. Score maturity, effort, impact, risk, and feasibility.
+5. Prioritize the capabilities that matter most.
+6. Track the before/after outcome data and scale only what proves value.
 
-1. **Stage Pulse** — every leader does this for all 7 PDLC stages: current maturity, target maturity, and a pain/opportunity rating. Low effort, produces an org-wide heatmap.
-2. **Capability deep-dive** — optional, for the 2–3 stages a leader's pulse flagged as worth a closer look. Six-axis scoring (time spent, frequency, AI potential, scalability, risk, feasibility) feeds a priority formula that ranks capabilities into P0/P1/P2 investment tiers, plus a placement recommendation (Central/Team-Specific/Hybrid).
+## What leaders track
 
-The current implementation adds a third practical layer: a configurable capability library that is editable by leaders and can include both org-default and team-custom capabilities. The tracker can be filtered by org, domain, team, and view so leaders can see the org roll-up or a specific team slice without mixing the records together.
+The core question is not whether the team is using AI. The core question is whether the organization is improving the real work.
 
-The full data model, scoring anchors, priority formula, and capability library are in [`docs/build-spec.md`](docs/build-spec.md) — that file is the technical source of truth; keep the scoring anchors and formula there unchanged so results stay comparable across every leader and every tool that implements this model.
+### North-star outcome metrics
 
-The centerpiece view is a maturity/focus heatmap: PDLC stages across one axis, L1–L5 maturity across the other, with capabilities placed inside each stage and an overlay showing where productivity impact is highest — so a leader can see, for example, that they're L2 in customer onboarding and L1 in incident RCA, but incident RCA is consuming far more capacity, making it the bigger opportunity. The detailed tracker (spreadsheet or app) is the drill-down behind that visual, not a separate product.
+- Cycle time reduction across planning, build, release, and support
+- Quality improvement: fewer defects, less rework, stronger test confidence
+- Customer impact: faster issue resolution, better onboarding, higher customer value delivery
+- Reliability: faster incident detection, shorter MTTR, more stable operations
+- Capacity gain: less manual effort and more time for higher-value work
+- Maturity movement: the capability moves from L1/L2 toward L3/L4/L5 over time
 
-## Current prototype features
+### Leading indicators
 
-- org / domain / team / view selectors for scope-aware analysis
-- editable capability library grouped by lifecycle stage
-- add and delete capability actions using a simple stage-card visual model
-- org-default capabilities alongside team-custom capabilities
-- included / N/A decisioning and must-have / should-have / optional need tier
-- explicit status setting with the default starting at Not started
-- a dedicated reference page at [`capability-library.html`](capability-library.html)
+- Maturity movement per stage and capability
+- Priority distribution across P0/P1/P2
+- Pilot-to-scale conversion rate
+- Coverage of key capabilities and owners
 
-## Metrics
+### Lagging indicators
 
-The real score of this work is not enthusiasm, dashboard traffic, or AI tool usage. It is whether AI is materially improving how work gets done and whether the organization is systematically moving from manual/fragile execution to more scalable, reliable, and customer-friendly operating models.
+- Before/after outcome impact for scaled capabilities
+- Reduction in manual work, defects, and resolution times
+- Measurable gains in throughput, quality, and customer outcomes
 
-### Outcome-focused metrics (primary)
-These are the metrics the tool should prioritize because they reflect the actual business problem being solved:
+## Why it matters
 
-- Cycle time reduction for planning, build, review, release, support, and incident resolution
-- Quality improvement: defect escape rate, rework rate, test pass rate, change failure rate
-- Customer experience impact: onboarding time, time to resolve tickets, CSAT, first-contact resolution, time to value
-- Operational efficiency: hours saved per workflow, backlog reduction, manual effort removed, staff capacity freed for higher-value work
-- Reliability and resilience: incident rate, MTTR, SLO attainment, production stability, governance exception rate
-- Scale and recurrence: percentage of workflows standardized, volume moved from manual to automated, % of AI-supported work with quality guardrails and human review
+This is not a dashboard about tool usage. It is a structured way to turn AI from scattered experimentation into systematic business improvement.
 
-### Leading indicators (early signals of progress)
-These help leaders know whether the transformation is moving in the right direction before the lagging business results fully show up:
+The goal is to diagnose the real bottlenecks, prioritize the right capabilities, prove the business impact, and scale the operating model.
 
-- Maturity movement per stage, per Org/Domain, over time (L1 → L5)
-- Distribution of capabilities across P0/P1/P2 priority tiers
-- Pilot → Scaled conversion rate (capabilities that moved from `status: Piloting` to `status: Scaled`)
-- Capability coverage: percentage of priority capabilities with a defined baseline, target state, and owner
-- Baseline-to-target gap closure on selected capabilities
+## Project status
 
-### Lagging indicators (proof of value)
-These are the stronger proof points that the AI transformation is actually solving the business problem:
+This repo contains the working concept, prototype, and build spec for the tracker. The detailed logic and data model live in [`docs/build-spec.md`](docs/build-spec.md).
 
-- Before/after impact (`baseline` vs `result`) across scaled capabilities — the leadership-ready proof-of-productivity view
-- Improvement in ticket resolution time, onboarding time, release cycle time, and incident MTTR
-- Reduction in rework, defects, or manual work for prioritized capabilities
-- Measurable throughput or quality gains after a capability reaches maturity L3/L4/L5
+For a realistic example of how the tracker should look in practice, see the worked example rows and sample data in [`docs/build-spec.md`](docs/build-spec.md). Those examples help show how a real team or org would populate the tracker and what the output should look like.
 
-### Initiative health metrics (secondary, not the headline score)
-These still matter, but they are support metrics, not the primary objective:
+## Example: Dunder Mifflin
 
-- Adoption: number of leaders / Org-Domains with a logged Stage Pulse
-- Coverage: percentage of the 7 stages pulsed per leader
-- Consistency: variance in maturity scoring narrowing across leaders once everyone scores against the same anchors
-- Governance health: how many capabilities have owners, target states, review cadence, and measurable success criteria
+Imagine Michael Scott is the org leader and the team leaders below are each assessing their own slice of the business.
 
-The central principle is simple: leadership should judge this initiative by real outcomes, not by the number of AI tools used or how many people filled in a form.
+### 1) The leaders and their remit
+
+| Leader | Focus area | Team-specific work | Shared org work |
+| --- | --- | --- | --- |
+| Michael Scott | Org roll-up | Executive reporting, operating rhythm, prioritization | Product analytics, roadmap, release readiness, org-level governance |
+| Pam Beesly | Customer experience and service | Customer onboarding, support knowledge, service enablement | Customer feedback synthesis, issue triage, customer communications |
+| Jim Halpert | Product and engineering execution | AI-assisted coding, feature definition, UX iteration | Requirements drafting, release planning, testing, engineering productivity |
+| Dwight Schrute | Operations and field execution | Warehouse workflow optimization, SOP quality, scheduling | Incident detection, resilience planning, SLA monitoring, risk oversight |
+| Angela Martin | Control and operational governance | Budget controls, vendor risk, compliance checks | Incident management, root cause analysis, security reviews, governance reporting |
+
+### 2) What each leader fills in
+
+Each leader evaluates the capability entries that matter to their area. The tracker asks for the same inputs across all cases:
+
+- current maturity
+- target maturity
+- time spent
+- frequency
+- AI potential
+- scalability
+- risk
+- feasibility
+- whether it is included in scope
+- whether it is central, hybrid, or team-specific
+- current status: Not started / Piloting / Scaled
+
+### 3) Example capability entries
+
+#### Pam Beesly — customer experience leader
+
+| Capability | Included | Type | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Customer onboarding & configuration | Yes | Team-specific | L2 | L4 | Piloting | P1 |
+| Support ticket triage | Yes | Central | L2 | L4 | Piloting | P0 |
+| Customer feedback synthesis | Yes | Hybrid | L1 | L3 | Not started | P0 |
+
+Pam is less focused on product coding and more on the customer journey. At her level, the investment decision is: make customer support and onboarding more consistent, faster, and less manual.
+
+#### Jim Halpert — product and engineering leader
+
+| Capability | Included | Type | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| AI-assisted coding | Yes | Team-specific | L2 | L4 | Piloting | P0 |
+| Requirements & PRD drafting | Yes | Central | L2 | L3 | Not started | P1 |
+| Test creation & automation | Yes | Hybrid | L2 | L4 | Piloting | P0 |
+
+Jim's value is in engineering throughput and quality. His team-specific capabilities are where the productivity lift is biggest, but some of the biggest gains are shared across the org because they affect release quality and consistency.
+
+#### Dwight Schrute — operations leader
+
+| Capability | Included | Type | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Warehouse workflow optimization | Yes | Team-specific | L1 | L3 | Not started | P0 |
+| Incident detection & management | Yes | Central | L2 | L4 | Piloting | P0 |
+| SLA / SLO tracking | Yes | Hybrid | L2 | L3 | Piloting | P1 |
+
+Dwight's world is operational efficiency and reliability. His biggest wins are in execution speed, process consistency, and fewer operational interruptions.
+
+#### Angela Martin — governance and operations leader
+
+| Capability | Included | Type | Current | Target | Status | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Security reviews | Yes | Central | L2 | L4 | Piloting | P0 |
+| Root cause analysis / post-incident review | Yes | Central | L2 | L4 | Piloting | P0 |
+| Vendor risk management | Yes | Team-specific | L1 | L3 | Not started | P1 |
+
+Angela is focused on control, reliability, and governance. Her investment decisions are often centralized because the value comes from standardization and risk reduction across the org.
+
+### 4) How Michael sees the org-level output
+
+Michael does not need to see every detail from every team to make the right decision. He sees the rollup:
+
+| Capability | Org view | Team view | Priority | Decision |
+| --- | --- | --- | --- | --- |
+| Support ticket triage | Central | Pam | P0 | Build centrally |
+| Incident detection & management | Central | Dwight / Angela | P0 | Build centrally |
+| AI-assisted coding | Team-specific | Jim | P0 | Support team-level investment |
+| Customer onboarding & configuration | Team-specific | Pam | P1 | Local team investment |
+| Security reviews | Central | Angela | P0 | Centralized governance investment |
+
+Michael's decision is then based on the aggregate picture:
+
+- invest centrally where one shared capability creates leverage across many teams
+- support team-level investment where the work is deeply local or specific to a domain
+- treat some capabilities as hybrid when they need local execution but shared governance
+
+This is the same logic the tracker uses at org, domain, and team level: the value is in the capability, not in the job title doing the work.
+
+### Michael's org-level summary
+
+| Recommendation | Why it matters |
+| --- | --- |
+| Build support ticket triage centrally | It affects many teams and improves service consistency |
+| Build incident detection centrally | Reliability and operational resilience are shared org outcomes |
+| Support AI-assisted coding at team level | It is highly valuable but anchored in engineering context |
+| Invest in customer onboarding locally | It is specific to the service experience and customer journey |
+| Keep security reviews centralized | Governance, quality, and risk control are org-wide requirements |
+
+This is the decision logic Michael gets from the tool: centralize shared, org-critical capabilities; localize team-specific work when execution is domain-specific; treat hybrid cases as a shared capability with local implementation detail.
+
+The main idea is that each leader scores the capabilities that matter to their remit, while Michael sees the aggregate picture across the full organization. This is the same logic the tracker uses for org, domain, team, and scope-based views.
 
 ## Repository structure
 
-```
-.
-├── README.md              # this file — vision, goals, how it works
-├── docs/
-│   └── build-spec.md       # data model, scoring anchors, priority formula, capability library
-├── LICENSE
-└── (app/ or sheet/ — implementation, added next)
-```
-
-## Status
-
-Early-stage, pre-implementation. The data model and scoring logic are defined; the tool (app or spreadsheet) is not yet built. See `docs/build-spec.md` for what's being built and `docs/build-spec.md#6-worked-example-rows-for-testing-the-build` for worked examples to validate any implementation against.
-
-## Contributing
-
-Not yet open for external contribution — this is being scaffolded first. A `CONTRIBUTING.md` will follow once the initial implementation lands.
+- [README.md](README.md) — leadership overview
+- [docs/build-spec.md](docs/build-spec.md) — technical model and logic
+- [index.html](index.html) — prototype dashboard
+- [capability-library.html](capability-library.html) — editable capability catalog
+- [app.js](app.js) — tracker logic
+- [styles.css](styles.css) — UI styling
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). (Confirm this is the license you want before the repo goes public; MIT is a permissive default, not a fixed choice.)
+MIT — see [`LICENSE`](LICENSE).
