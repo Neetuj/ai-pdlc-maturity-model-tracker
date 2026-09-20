@@ -37,12 +37,13 @@ The reason this matters is simple: as critical capabilities move up the maturity
 ### What the tracker measures today
 
 - maturity by stage and the capabilities mapped into that stage
+- the most urgent capability gaps inside each stage, ranked by P0/P1/P2 priority
 - capability coverage and ownership across teams and domains
 - priority distribution across P0/P1/P2
 - status movement from not started to piloting to scaled adoption
 - org-wide, hybrid, and team-specific capability placement
 
-The heatmap is not just a stage score. Each stage is explicitly mapped to the capabilities that belong there, so leaders can see both the maturity signal and the actual workstreams represented in that stage.
+The heatmap is not just a stage score. Each stage is explicitly mapped to the capabilities that belong there, and the leader can immediately see which capabilities within that stage deserve attention first. The stage itself carries a single aggregated maturity signal, while the underlying capability rows show the actual team-submitted maturity values averaged into the org view. This turns the heatmap into an action-oriented operating view rather than a generic maturity grid.
 
 ### North-star outcomes
 
@@ -77,10 +78,11 @@ These are the business results that should show up after the capability model ha
 
 1. Start with a quick Stage Pulse across all 7 PDLC stages.
 2. Identify the stages with the biggest gap or opportunity.
-3. Drill into the relevant capabilities.
-4. Score maturity, effort, risk, feasibility, and outcome impact.
-5. Decide what to centralize, what to keep local, and what to treat as hybrid.
-6. Track the before/after impact and scale only what proves value.
+3. For each stage, review the top capability gaps and their priority tier.
+4. Drill into the relevant capabilities.
+5. Score maturity, effort, risk, feasibility, and outcome impact.
+6. Decide what to centralize, what to keep local, and what to treat as hybrid.
+7. Track the before/after impact and scale only what proves value.
 
 ## Who it is for
 

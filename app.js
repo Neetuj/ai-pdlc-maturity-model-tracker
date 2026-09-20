@@ -452,34 +452,78 @@ function renderHeatmap() {
         return { name, avg };
       });
 
-    const capabilityText = stageCapabilities.length ? stageCapabilities.slice(0, 3).join(' • ') : 'No mapped capabilities';
-    const extraCount = stageCapabilities.length > 3 ? ` +${stageCapabilities.length - 3} more` : '';
-
-    cells.push(`
-      <div class="heatmap-stage">
-        <span>${stage}</span>
-        <small>${capabilityText}${extraCount}</small>
-      </div>
-    `);
+    const capabilitySummaries = stageCapabilities
+      .map((name) => {
+        const matches = relevantRows.filter((row) => row.capability === name);
+        const avg = matches.length
+          ? matches.reduce((sum, row) => sum + Number(row.currentMaturity || 1), 0) / matches.length
+          : 0;
+        const levelCounts = levels.map((level) => {
+          const levelNumber = Number(level.replace('L', ''));
+          const count = matches.filter((row) => Number(row.currentMaturity) === levelNumber).length;
+          return { level, levelNumber, count };
+        });
+        const maxPriority = matches.length ? Math.max(...matches.map((row) => computePriority(row))) : 0;
+        const hasAssessment = matches.length > 0 && matches.some((row) => row.status && row.status !== 'Not assessed' && row.status !== 'N/A');
+        const tier = matches.length ? getPriorityTier(maxPriority) : '';
+        return {
+          name,
+          avg,
+          maturity: Math.max(1, Math.min(5, Math.round(avg || 1))),
+          priority: maxPriority,
+          tier,
+          levelCounts,
+          hasAssessment,
+          matches
+        };
+      })
+      .sort((a, b) => (b.matches.length ? b.priority : -1) - (a.matches.length ? a.priority : -1) || a.name.localeCompare(b.name));
 
     const assessedRows = relevantRows.filter((item) => item.status && item.status !== 'Not assessed' && item.status !== 'N/A');
+    const assessedCapabilityRows = capabilitySummaries.filter((item) => item.matches.length > 0);
+    const stageAverage = assessedCapabilityRows.length
+      ? assessedCapabilityRows.reduce((total, item) => total + item.avg, 0) / assessedCapabilityRows.length
+      : null;
+    const roundedStageLevel = stageAverage !== null ? Math.max(1, Math.min(5, Math.round(stageAverage))) : null;
 
-    if (assessedRows.length === 0) {
-      levels.forEach((level) => {
-        const label = `Stage not assessed — ${stageCapabilities.join(', ') || 'No mapped capabilities'}`;
-        cells.push(`<div class="heatmap-cell no-data" title="${label}">—</div>`);
-      });
-      return;
-    }
+    const stageCells = levels.map((level) => {
+      if (stageAverage === null) {
+        return `<div class="heatmap-cell no-data" title="Stage not assessed — ${stageCapabilities.join(', ') || 'No mapped capabilities'}">—</div>`;
+      }
 
-    levels.forEach((level) => {
       const targetLevel = Number(level.replace('L', ''));
-      const averagedMatches = averagedCapabilities.filter((item) => Math.round(item.avg) === targetLevel).length;
-      const directMatches = assessedRows.filter((item) => Number(item.currentMaturity) === targetLevel).length;
-      const totalMatches = Math.max(averagedMatches, directMatches);
-      const value = totalMatches > 0 ? `${totalMatches}` : '—';
-      const className = totalMatches > 0 ? `heatmap-cell level-${targetLevel}` : 'heatmap-cell';
-      cells.push(`<div class="${className}" title="${stage}: ${stageCapabilities.join(', ')}">${value}</div>`);
+      const isAverageLevel = targetLevel === roundedStageLevel;
+      const value = isAverageLevel ? `${targetLevel}` : '—';
+      const className = isAverageLevel ? `heatmap-cell level-${targetLevel} stage-highlight` : 'heatmap-cell no-data stage-empty';
+      return `<div class="${className}" title="${stage}: average maturity ${stageAverage.toFixed(1)} / 5">${value}</div>`;
+    });
+
+    cells.push(`<div class="heatmap-stage"><span class="heatmap-stage-label">${stage}</span></div>`);
+    cells.push(...stageCells);
+
+    capabilitySummaries.forEach((item) => {
+      const priorityClass = item.tier ? (item.tier.toLowerCase().includes('p0') ? 'p0' : item.tier.toLowerCase().includes('p1') ? 'p1' : 'p2') : '';
+      const hasPriority = item.matches.length > 0 && item.tier;
+      const rowClass = hasPriority ? 'heatmap-row-header' : 'heatmap-row-header unassessed';
+      const maturityCells = levels.map((level) => {
+        const targetLevel = Number(level.replace('L', ''));
+        const match = item.levelCounts.find((entry) => entry.levelNumber === targetLevel);
+        const count = match ? match.count : 0;
+        const value = count > 0 ? `${count}` : '—';
+        const isAverageLevel = item.matches.length > 0 && Math.round(item.avg || 1) === targetLevel && count > 0;
+        const className = !item.matches.length
+          ? 'heatmap-cell no-data'
+          : isAverageLevel
+            ? `heatmap-cell level-${targetLevel}`
+            : count > 0
+              ? `heatmap-cell level-${targetLevel} muted-fill`
+              : 'heatmap-cell';
+        return `<div class="${className}" title="${item.name}: ${item.matches.length ? `avg ${item.avg.toFixed(1)} / 5, ${item.tier}` : 'No team assessment yet'}">${value}</div>`;
+      });
+
+      const priorityMarkup = hasPriority ? `<span class="heatmap-priority-badge ${priorityClass}">${item.tier}</span>` : '';
+      cells.push(`<div class="${rowClass}"><span>${item.name}</span>${priorityMarkup}</div>`);
+      cells.push(...maturityCells);
     });
   });
 

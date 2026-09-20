@@ -11,7 +11,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 - **Org/Domain**: free-text field identifying the leader's area (e.g. "Payments Platform", "EMEA Support"). Replaces any profession/function split — one leader's Org/Domain spans everything they own.
 - **Parent org / roll-up org**: the higher-level org owner that aggregates multiple child orgs. This is critical for a Scott-style roll-up, where Michael sees the consolidated picture across Pam, Jim, Dwight, and Angela.
 - **PDLC stage**: a fixed lifecycle stage, with a shorter executive view (7 key stages) and a fuller operational capability map underneath (discover, strategy, define, design, build, validate, release, adopt, operate, support, incident, learn).
-- **Stage Pulse entry**: one row per Org/Domain × Stage. Lightweight — no six-axis scoring.
+- **Stage Pulse entry**: one row per Org/Domain × Stage. Lightweight — no six-axis scoring, but it should be paired with the stage's most urgent capability gaps in the executive heatmap.
 - **Capability entry**: one row per Org/Domain × Stage × Capability. Full scoring, computed priority, and placement.
 - **Maturity level**: L1–L5, used identically at both tiers (section 3.1).
 - **Placement**: Central / Team-Specific / Hybrid, either taken from a capability's library default or computed from four yes/no answers (section 3.4), with a leader-level override always available.
@@ -40,7 +40,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 | `updatedAt` | datetime | |
 | `updatedBy` | text | who logged it |
 
-Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org/Domain) with almost no effort. This is the "too little" floor — every leader does this for all 7 stages. The heatmap should also be viewable at the root org level, where child-org assessments are aggregated and the same capability can be counted once per stage after averaging or consolidating duplicate entries.
+Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org/Domain) with almost no effort. This is the "too little" floor — every leader does this for all 7 stages. The heatmap should also be viewable at the root org level, where child-org assessments are aggregated and the same capability can be counted once per stage after averaging or consolidating duplicate entries. At the stage level, the row shows one highlighted maturity signal generated from the underlying capability average; beneath it sit the individual capability rows that were aggregated to create that stage rating.
 
 ### 2.2 Capability entry
 
@@ -258,8 +258,8 @@ The system should also make the transformation path explicit: diagnose the capab
 
 The required views are:
 
-1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries), and paired with the mapped capability names under each stage. This is the fast, comprehensive view.
-2. **Capability tracker table** — every capability entry, sortable by `priority` descending, filterable by Org/Domain, stage, placement, and tier. Shows current→target maturity, priority score + tier, placement, status.
+1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries), with a single highlighted stage maturity cell based on the average of the underlying capability rows, and the mapped capability names beneath it as the operational drilldown. This is the fast, comprehensive view for leaders.
+2. **Capability tracker table** — every capability entry, sortable by `priority` descending, filterable by Org/Domain, stage, placement, and tier. Shows current→target maturity, priority score + tier, placement, status, and the capability-level action signal that sits under each stage in the heatmap.
 3. **Full PDLC capability map** — a detailed capability atlas that covers the broader lifecycle beyond the short executive stage list, so it includes discovery, strategy, plan, define, design, build, test, release, adopt, operate, support, incidents, and continuous improvement.
 4. **Top priorities (org-wide)** — top 10–15 capability entries by `priority`, across every Org/Domain, for the investment shortlist.
 5. **Central / Team-Specific / Hybrid grouped view** — every capability entry grouped by `placementEffective`, with the default/computed placement visible alongside any org override, so leadership can see what to build once vs. leave to teams.
@@ -271,9 +271,9 @@ The required views are:
 
 The executive heatmap must always show the stage and the mapped capability set behind it. A cell or stage row is not meaningful if it only expresses a maturity value without the list of capabilities that define that stage's operating model.
 
-In other words, every stage should be treated as a bundle of capability entries, not as an abstract label. The UI should make these capabilities visible alongside the stage summary so leaders know what work is actually being scored in that stage.
+In other words, every stage should be treated as a bundle of capability entries, not as an abstract label. The UI should make these capabilities visible beneath the stage summary, with the stage itself showing a single highlighted maturity level based on the average of the underlying capability rows. The most urgent capability gaps should rank at the top so leaders know which work is actually being scored in that stage and which gaps need attention first.
 
-This applies to the org-level heatmap, team-level heatmap, and the detailed capability view. If a stage is labeled "Build & Validate," the user should immediately see the major capabilities mapped under it such as AI-assisted coding, test creation & automation, release readiness, and security reviews.
+This applies to the org-level heatmap, team-level heatmap, and the detailed capability view. If a stage is labeled "Build & Validate," the user should immediately see the major capabilities mapped under it such as AI-assisted coding, test creation & automation, release readiness, and security reviews, with the highest-risk items surfaced first as P0/P1/P2 action drivers. The stage-level highlight is an aggregate summary; the capability rows beneath it are the operational detail.
 
 ### 4.2 Outcome-tracking metric framework
 

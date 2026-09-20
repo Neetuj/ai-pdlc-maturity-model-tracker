@@ -71,7 +71,7 @@ Angela leads the risk, controls, and compliance org. That includes governance, p
 
 ## Sample org heatmap from the case study
 
-The tracker should default to a neutral heatmap state for every stage until the leader has reviewed a capability. In this example, the heatmap reflects a mix of assessed and unassessed areas. The gray cells indicate that a capability has not yet been reviewed; the colored cells indicate that the org has already assessed the capability and assigned a maturity level. Critically, each stage is paired with the actual capability set mapped to it, so the leader can immediately tell what work sits under each stage instead of reading a vague maturity label.
+The tracker should default to a neutral heatmap state for every stage until the leader has reviewed a capability. In this example, the heatmap reflects a mix of assessed and unassessed areas. The gray rows indicate that a capability has not yet been reviewed; the colored cells indicate that the org has already assessed the capability and assigned a maturity level. Critically, each stage is paired with the actual capability set mapped to it, and the most urgent capability gaps within that stage are surfaced first so the leader can immediately tell what work sits under each stage and which issues deserve attention now. The stage itself also carries a single aggregated maturity highlight generated from the average of its assessed capability rows, while the capability rows beneath it show the underlying detail that created that stage score.
 
 | Stage | Mapped capabilities | Heatmap status | Interpretation |
 | --- | --- | --- | --- |
@@ -114,7 +114,7 @@ This is the first view a leader sees. It combines the org-wide summary cards wit
 
 ![PDLC heatmap](./images/case-study/02-stage-heatmap.svg)
 
-The heatmap reveals where the org has active maturity, where it is still neutral or under-assessed, and where the biggest investment opportunities likely sit. This makes the stage logic visible without forcing leaders to manually read every row of data.
+The heatmap reveals where the org has active maturity, where it is still neutral or under-assessed, and where the biggest investment opportunities likely sit. It is strongest when it shows both the stage aggregate and the top capability gaps inside that stage, ranked by urgency, so leaders do not need to read raw rows to understand what is most important to fix. The stage highlight is an executive summary of the underlying capability average; the capability rows beneath it are the operational evidence.
 
 ### 3. Priority input editor
 
