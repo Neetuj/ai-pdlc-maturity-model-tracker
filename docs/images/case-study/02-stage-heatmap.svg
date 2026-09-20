@@ -1,0 +1,42 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#f5f8fc"/>
+  <rect x="90" y="60" width="1220" height="780" rx="28" fill="#ffffff" stroke="#dfe7f1"/>
+  <text x="130" y="110" font-size="28" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">PDLC Heatmap</text>
+  <rect x="130" y="140" width="1120" height="640" rx="20" fill="#f9fbff" stroke="#dfe7f1"/>
+  <g font-family="Segoe UI, Arial, sans-serif" font-weight="700" fill="#596980">
+    <text x="160" y="185" font-size="14">Stage</text>
+    <text x="420" y="185" font-size="14">L1</text>
+    <text x="520" y="185" font-size="14">L2</text>
+    <text x="620" y="185" font-size="14">L3</text>
+    <text x="720" y="185" font-size="14">L4</text>
+    <text x="820" y="185" font-size="14">L5</text>
+    <text x="905" y="185" font-size="14">Status</text>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="160" y="240" font-size="18" fill="#152233" font-weight="700">Discover &amp; Plan</text>
+    <text x="160" y="300" font-size="18" fill="#152233" font-weight="700">Define &amp; Design</text>
+    <text x="160" y="360" font-size="18" fill="#152233" font-weight="700">Build &amp; Validate</text>
+    <text x="160" y="420" font-size="18" fill="#152233" font-weight="700">Release &amp; Adoption</text>
+    <text x="160" y="480" font-size="18" fill="#152233" font-weight="700">Operate &amp; Support</text>
+    <text x="160" y="540" font-size="18" fill="#152233" font-weight="700">Learn &amp; Optimize</text>
+    <text x="160" y="600" font-size="18" fill="#152233" font-weight="700">Lead &amp; Run Org</text>
+  </g>
+  <g>
+    <rect x="390" y="218" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="218" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="590" y="218" width="90" height="40" rx="8" fill="#fff4bf"/><rect x="690" y="218" width="90" height="40" rx="8" fill="#def5e8"/><rect x="790" y="218" width="90" height="40" rx="8" fill="#dfeaf8"/>
+    <rect x="390" y="278" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="278" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="590" y="278" width="90" height="40" rx="8" fill="#fff4bf"/><rect x="690" y="278" width="90" height="40" rx="8" fill="#def5e8"/><rect x="790" y="278" width="90" height="40" rx="8" fill="#eaf2ff"/>
+    <rect x="390" y="338" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="338" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="590" y="338" width="90" height="40" rx="8" fill="#fff4bf"/><rect x="690" y="338" width="90" height="40" rx="8" fill="#def5e8"/><rect x="790" y="338" width="90" height="40" rx="8" fill="#dfeaf8"/>
+    <rect x="390" y="398" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="398" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="590" y="398" width="90" height="40" rx="8" fill="#fff4bf"/><rect x="690" y="398" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="790" y="398" width="90" height="40" rx="8" fill="#eef2f6"/>
+    <rect x="390" y="458" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="458" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="590" y="458" width="90" height="40" rx="8" fill="#def5e8"/><rect x="690" y="458" width="90" height="40" rx="8" fill="#eaf2ff"/><rect x="790" y="458" width="90" height="40" rx="8" fill="#dfeaf8"/>
+    <rect x="390" y="518" width="90" height="40" rx="8" fill="#f2d1d1"/><rect x="490" y="518" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="590" y="518" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="690" y="518" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="790" y="518" width="90" height="40" rx="8" fill="#eef2f6"/>
+    <rect x="390" y="578" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="490" y="578" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="590" y="578" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="690" y="578" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="790" y="578" width="90" height="40" rx="8" fill="#eef2f6"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#152233" font-weight="700">
+    <text x="930" y="240" font-size="18">Gray / partial</text>
+    <text x="930" y="300" font-size="18">Gray / partial</text>
+    <text x="930" y="360" font-size="18">Yellow / active</text>
+    <text x="930" y="420" font-size="18">Gray / limited signal</text>
+    <text x="930" y="480" font-size="18">Yellow / active</text>
+    <text x="930" y="540" font-size="18">Gray / emerging</text>
+    <text x="930" y="600" font-size="18">Gray / default</text>
+  </g>
+</svg>

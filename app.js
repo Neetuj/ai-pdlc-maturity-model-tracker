@@ -14,9 +14,9 @@ const stageOptions = [
 const defaultState = [
   {
     id: 'customer-research',
-    org: 'X Team',
-    domain: 'Platform',
-    team: 'Product',
+    org: 'Org A',
+    domain: 'Customer',
+    team: 'Customer Experience',
     stage: 'Discover & Plan',
     capability: 'Customer research',
     defaultPlacement: 'Team-Specific',
@@ -35,8 +35,8 @@ const defaultState = [
   },
   {
     id: 'roadmap-prioritization',
-    org: 'X Team',
-    domain: 'Platform',
+    org: 'Org B',
+    domain: 'Product',
     team: 'Product',
     stage: 'Discover & Plan',
     capability: 'Roadmap prioritization',
@@ -56,8 +56,8 @@ const defaultState = [
   },
   {
     id: 'prd-drafting',
-    org: 'X Team',
-    domain: 'Platform',
+    org: 'Org B',
+    domain: 'Product',
     team: 'Engineering',
     stage: 'Define & Design',
     capability: 'PRD drafting',
@@ -76,8 +76,8 @@ const defaultState = [
   },
   {
     id: 'architecture-design',
-    org: 'X Team',
-    domain: 'Platform',
+    org: 'Org B',
+    domain: 'Product',
     team: 'Engineering',
     stage: 'Define & Design',
     capability: 'Architecture & design reviews',
@@ -97,8 +97,8 @@ const defaultState = [
   },
   {
     id: 'ai-coding',
-    org: 'X Team',
-    domain: 'Platform',
+    org: 'Org B',
+    domain: 'Product',
     team: 'Engineering',
     stage: 'Build & Validate',
     capability: 'AI-assisted coding',
@@ -118,9 +118,9 @@ const defaultState = [
   },
   {
     id: 'incident-triage',
-    org: 'X Team',
-    domain: 'Platform',
-    team: 'Operations',
+    org: 'Org C',
+    domain: 'Operations',
+    team: 'Service Operations',
     stage: 'Operate, Support & Resilience',
     capability: 'Incident detection & management',
     defaultPlacement: 'Central',
@@ -139,8 +139,8 @@ const defaultState = [
   },
   {
     id: 'customer-onboarding',
-    org: 'X Team',
-    domain: 'Platform',
+    org: 'Org A',
+    domain: 'Customer',
     team: 'Delivery',
     stage: 'Release & Customer Adoption',
     capability: 'Customer onboarding & configuration',
@@ -160,9 +160,9 @@ const defaultState = [
   },
   {
     id: 'product-analytics',
-    org: 'X Team',
-    domain: 'Platform',
-    team: 'Product',
+    org: 'Org D',
+    domain: 'Governance',
+    team: 'Compliance',
     stage: 'Learn & Optimize',
     capability: 'Product & usage analytics',
     defaultPlacement: 'Central',
@@ -213,12 +213,12 @@ function loadScope() {
   const saved = localStorage.getItem(SCOPE_KEY);
   if (saved) {
     try {
-      return { ...{ org: 'X Team', domain: 'All domains', team: 'All teams', view: 'Org roll-up' }, ...JSON.parse(saved) };
+      return { ...{ org: 'All orgs', domain: 'All domains', team: 'All teams', view: 'Org roll-up' }, ...JSON.parse(saved) };
     } catch (error) {
       console.warn('Failed to parse saved scope state');
     }
   }
-  return { org: 'X Team', domain: 'All domains', team: 'All teams', view: 'Org roll-up' };
+  return { org: 'All orgs', domain: 'All domains', team: 'All teams', view: 'Org roll-up' };
 }
 
 function saveScope() {
@@ -339,9 +339,9 @@ function getVisibleRows() {
 }
 
 function renderScopeControls() {
-  const orgs = ['X Team', 'All orgs'];
-  const domains = ['All domains', 'Platform', 'Customer', 'Operations'];
-  const teams = ['All teams', 'Product', 'Engineering', 'Operations', 'Delivery'];
+  const orgs = ['All orgs', ...new Set(state.map((row) => row.org))];
+  const domains = ['All domains', ...new Set(state.map((row) => row.domain))];
+  const teams = ['All teams', ...new Set(state.map((row) => row.team))];
 
   orgScopeSelect.innerHTML = orgs.map((value) => `<option value="${value}" ${value === scopeState.org ? 'selected' : ''}>${value}</option>`).join('');
   domainScopeSelect.innerHTML = domains.map((value) => `<option value="${value}" ${value === scopeState.domain ? 'selected' : ''}>${value}</option>`).join('');

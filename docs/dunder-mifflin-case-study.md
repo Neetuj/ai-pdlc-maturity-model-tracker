@@ -100,6 +100,34 @@ Michael sees the aggregate view, not a fragmented collection of team responses. 
 
 This is the decision pattern the tracker is meant to unlock: it helps leaders separate capabilities that should be standardized once, governed centrally, and deployed broadly from those that should remain team-owned and customized to local context.
 
+## Visual snapshots of the tracker
+
+The examples below show how the tracker looks in practice at the org level, stage level, and capability-editing level. These are intentionally kept generic in the product itself, while the case-study narrative can still use Scott’s org example to explain the operating model.
+
+### 1. Executive dashboard view
+
+![Org roll-up dashboard](./images/case-study/01-org-rollup.svg)
+
+This is the first view a leader sees. It combines the org-wide summary cards with the PDLC heatmap and scope filters, giving a single operating view across all stages before anyone drills into a particular capability.
+
+### 2. Stage-by-stage maturity view
+
+![PDLC heatmap](./images/case-study/02-stage-heatmap.svg)
+
+The heatmap reveals where the org has active maturity, where it is still neutral or under-assessed, and where the biggest investment opportunities likely sit. This makes the stage logic visible without forcing leaders to manually read every row of data.
+
+### 3. Priority input editor
+
+![Priority editor](./images/case-study/03-priority-editor.svg)
+
+The priority model is transparent: leaders tune the real inputs (time spent, frequency, AI potential, scalability, risk, feasibility) and the score updates immediately. This creates trust because the decision is tied to evidence, not a subjective guess.
+
+### 4. Editable capability library
+
+![Capability library](./images/case-study/04-capability-library.svg)
+
+The capability library keeps the model structured by stage while still remaining editable. Leaders can add, rename, or remove capabilities at the org or team level without breaking the underlying maturity model.
+
 ## Why this matters
 
 The tracker helps answer a question that many organizations struggle with during AI transformation:

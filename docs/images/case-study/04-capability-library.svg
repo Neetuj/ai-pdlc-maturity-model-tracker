@@ -1,0 +1,68 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#eef4ff"/>
+  <rect x="70" y="40" width="1260" height="820" rx="26" fill="#ffffff" stroke="#dfe7f1"/>
+  <rect x="100" y="70" width="1200" height="70" rx="18" fill="#f7faff" stroke="#dfe7f1"/>
+  <text x="130" y="112" font-size="32" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Capability Library</text>
+  <rect x="1080" y="86" width="170" height="38" rx="10" fill="#dde8ff"/>
+  <text x="1125" y="109" font-size="14" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Back to tracker</text>
+
+  <g transform="translate(100,180)">
+    <rect x="0" y="0" width="360" height="240" rx="18" fill="#f9fbff" stroke="#dfe7f1"/>
+    <text x="28" y="34" font-size="20" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Discover &amp; Plan</text>
+    <rect x="22" y="54" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="76" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Customer research</text>
+    <rect x="282" y="57" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="74" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="100" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="122" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Roadmap prioritization</text>
+    <rect x="282" y="103" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="120" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="146" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="168" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Business case / ROI</text>
+    <rect x="282" y="149" width="42" height="24" rx="12" fill="#fff1e6"/>
+    <text x="292" y="166" font-size="11" fill="#a85900" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Team</text>
+  </g>
+
+  <g transform="translate(500,180)">
+    <rect x="0" y="0" width="360" height="240" rx="18" fill="#f9fbff" stroke="#dfe7f1"/>
+    <text x="28" y="34" font-size="20" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Define &amp; Design</text>
+    <rect x="22" y="54" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="76" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">PRD drafting</text>
+    <rect x="282" y="57" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="74" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="100" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="122" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Architecture &amp; design</text>
+    <rect x="282" y="103" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="120" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="146" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="168" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Dependency mapping</text>
+    <rect x="282" y="149" width="42" height="24" rx="12" fill="#fff1e6"/>
+    <text x="292" y="166" font-size="11" fill="#a85900" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Team</text>
+  </g>
+
+  <g transform="translate(900,180)">
+    <rect x="0" y="0" width="360" height="240" rx="18" fill="#f9fbff" stroke="#dfe7f1"/>
+    <text x="28" y="34" font-size="20" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Build &amp; Validate</text>
+    <rect x="22" y="54" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="76" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">AI-assisted coding</text>
+    <rect x="282" y="57" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="74" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="100" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="122" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Test creation &amp; automation</text>
+    <rect x="282" y="103" width="42" height="24" rx="12" fill="#edf3ff"/>
+    <text x="293" y="120" font-size="11" fill="#2556d9" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Org</text>
+    <rect x="22" y="146" width="315" height="34" rx="10" fill="#ffffff" stroke="#dfe7f1"/>
+    <text x="42" y="168" font-size="14" fill="#152233" font-family="Segoe UI, Arial, sans-serif">Release readiness checks</text>
+    <rect x="282" y="149" width="42" height="24" rx="12" fill="#fff1e6"/>
+    <text x="292" y="166" font-size="11" fill="#a85900" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Team</text>
+  </g>
+
+  <g transform="translate(100,470)">
+    <rect x="0" y="0" width="1160" height="104" rx="18" fill="#f7faff" stroke="#dfe7f1"/>
+    <text x="24" y="38" font-size="20" fill="#152233" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Quick actions</text>
+    <rect x="26" y="48" width="170" height="38" rx="10" fill="#eafaf2"/>
+    <text x="76" y="72" font-size="16" fill="#1f8a5d" font-family="Segoe UI, Arial, sans-serif" font-weight="700">+ Add</text>
+    <rect x="220" y="48" width="185" height="38" rx="10" fill="#fff1f0"/>
+    <text x="268" y="72" font-size="16" fill="#b63d3d" font-family="Segoe UI, Arial, sans-serif" font-weight="700">× Delete</text>
+  </g>
+</svg>
