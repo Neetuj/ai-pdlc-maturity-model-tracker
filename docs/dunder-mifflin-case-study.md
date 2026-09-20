@@ -25,6 +25,28 @@ This matters because AI transformation often fails when leaders treat every capa
 
 It is also important to distinguish between capabilities that have not yet been reviewed and capabilities that were reviewed and intentionally left as not started. In the tracker, the default state is "Not assessed" until a leader evaluates a capability. "Not started" is only used after the leader has reviewed it and decided it is relevant but has not begun execution yet.
 
+## Visual snapshots of the tracker
+
+These examples are intentionally presented early so the product story is anchored in the actual operating view before the detailed business-unit tables and recommendations.
+
+### 1. PDLC heatmap — stage pulse + capability gaps
+
+![PDLC heatmap — stage pulse + capability gaps](./images/case-study/02-stage-heatmap.svg)
+
+This is the live tracker view: each stage carries a single maturity signal, while the rows beneath it show the actual capability gaps driving that stage result. The design is intentionally stage-aware and capability-aware, so leaders can see the aggregate stage maturity without losing the operational detail that explains why that stage is a priority.
+
+### 2. Priority input editor
+
+![Priority editor](./images/case-study/03-priority-editor.svg)
+
+The priority model is transparent: leaders tune the real inputs (time spent, frequency, AI potential, scalability, risk, feasibility) and the score updates immediately. This creates trust because the decision is tied to evidence, not a subjective guess.
+
+### 3. Editable capability library
+
+![Capability library](./images/case-study/04-capability-library.svg)
+
+The capability library keeps the model structured by stage while still remaining editable. Leaders can add, rename, or remove capabilities at the org or team level without breaking the underlying maturity model.
+
 ## Team-level view
 
 Below is what each leader sees in their local view before the aggregate org view is built.
@@ -84,49 +106,6 @@ The tracker should default to a neutral heatmap state for every stage until the 
 | Lead & Run the Org | Capacity planning, stakeholder reporting, vendor management | Gray / default baseline | Leadership and governance mechanics are not yet fully reviewed |
 
 This is exactly how the heatmap should behave in the product: the default state is not “failed or weak,” it is simply “not assessed yet.” The heatmap updates as the leader scores the relevant capabilities and moves from a neutral baseline into an active operating picture.
-
-## Org-level roll-up
-
-Michael sees the aggregate view, not a fragmented collection of team responses. The tracker consolidates the assessment into a clearer operating picture. When the same capability is assessed by multiple leaders at different levels of the org, the root view averages or consolidates those values rather than treating them as separate, conflicting inputs.
-
-| Stage | Capability | Aggregate view | Priority | Recommended investment |
-| --- | --- | --- | --- | --- |
-| Operate, Support & Resilience | Support ticket triage | Central | P0 | Build centrally |
-| Operate, Support & Resilience | Incident detection & management | Central | P0 | Build centrally |
-| Build & Validate | Security reviews | Central | P0 | Centralized governance investment |
-| Build & Validate | AI-assisted coding | Team-specific | P0 | Support team-level investment |
-| Release & Customer Adoption | Customer onboarding & configuration | Team-specific | P1 | Local team investment |
-| Operate, Support & Resilience | SLA / SLO tracking | Hybrid | P1 | Shared framework with local execution |
-
-This is the decision pattern the tracker is meant to unlock: it helps leaders separate capabilities that should be standardized once, governed centrally, and deployed broadly from those that should remain team-owned and customized to local context.
-
-## Visual snapshots of the tracker
-
-The examples below show how the tracker looks in practice at the org level, stage level, and capability-editing level. These are intentionally kept generic in the product itself, while the case-study narrative can still use Scott’s org example to explain the operating model.
-
-### 1. Executive dashboard view
-
-![Org roll-up dashboard](./images/case-study/01-org-rollup.svg)
-
-This is the first view a leader sees. It combines the org-wide summary cards with the PDLC heatmap and scope filters, giving a single operating view across all stages before anyone drills into a particular capability.
-
-### 2. PDLC heatmap — stage pulse + capability gaps
-
-![PDLC heatmap — stage pulse + capability gaps](./images/case-study/02-stage-heatmap.svg)
-
-This is the live tracker view: each stage carries a single maturity signal, while the rows beneath it show the actual capability gaps driving that stage result. The design is intentionally stage-aware and capability-aware, so leaders can see the aggregate stage maturity without losing the operational detail that explains why that stage is a priority.
-
-### 3. Priority input editor
-
-![Priority editor](./images/case-study/03-priority-editor.svg)
-
-The priority model is transparent: leaders tune the real inputs (time spent, frequency, AI potential, scalability, risk, feasibility) and the score updates immediately. This creates trust because the decision is tied to evidence, not a subjective guess.
-
-### 4. Editable capability library
-
-![Capability library](./images/case-study/04-capability-library.svg)
-
-The capability library keeps the model structured by stage while still remaining editable. Leaders can add, rename, or remove capabilities at the org or team level without breaking the underlying maturity model.
 
 ## Why this matters
 
