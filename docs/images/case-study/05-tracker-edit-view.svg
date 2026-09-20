@@ -1,0 +1,160 @@
+<svg width="1800" height="1300" viewBox="0 0 1800 1300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI-Native PDLC tracker editing view">
+  <defs>
+    <style>
+      .title { font: 800 34px 'Segoe UI', Arial, sans-serif; fill: #162335; }
+      .subtitle { font: 700 15px 'Segoe UI', Arial, sans-serif; fill: #61728d; }
+      .panel { fill: #ffffff; stroke: #dde6f0; stroke-width: 1; }
+      .panel-soft { fill: #f7faff; stroke: #dfeaf7; stroke-width: 1; }
+      .card { fill: #ffffff; stroke: #dfeaf7; stroke-width: 1; }
+      .header-row { fill: #edf4ff; }
+      .row { fill: #ffffff; }
+      .row-alt { fill: #f9fbff; }
+      .tag { fill: #edf3ff; stroke: #d8e5ff; stroke-width: 1; }
+      .tag-amber { fill: #fff2d7; stroke: #efd59e; stroke-width: 1; }
+      .tag-rose { fill: #ffeceb; stroke: #f2c3bc; stroke-width: 1; }
+      .tag-green { fill: #eafaf1; stroke: #bfe8ca; stroke-width: 1; }
+      .pill { fill: #edf4ff; }
+      .cell { fill: #ffffff; stroke: #dfeaf7; stroke-width: 1; }
+      .input { fill: #f4f7fb; stroke: #dfeaf7; stroke-width: 1; }
+      .select { fill: #eef4ff; stroke: #dfeaf7; stroke-width: 1; }
+      .muted { fill: #5d6f85; }
+      .muted-strong { fill: #30425f; }
+      .dark { fill: #17263d; }
+      .blue { fill: #2459d4; }
+      .green { fill: #1f8a5d; }
+      .amber { fill: #b7791f; }
+      .red { fill: #b34646; }
+      .badge { font: 800 11px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .small { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #4c607d; }
+      .small-strong { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #20314c; }
+      .body { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #2b405a; }
+      .body-strong { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #1b2d42; }
+      .metric { font: 800 22px 'Segoe UI', Arial, sans-serif; fill: #17263d; }
+      .metric-label { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #5c7188; }
+      .stage { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #20314c; }
+      .cap { font: 700 15px 'Segoe UI', Arial, sans-serif; fill: #1d304b; }
+      .note { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #52657d; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1300" fill="#f5f7fb"/>
+
+  <rect x="70" y="42" width="1660" height="1216" rx="22" class="panel"/>
+
+  <text x="110" y="96" class="title">AI-Native PDLC Tracker</text>
+  <text x="1110" y="96" class="subtitle">Org: Scott / Leadership view</text>
+
+  <rect x="110" y="118" width="96" height="40" rx="10" class="pill"/>
+  <text x="131" y="144" class="small-strong">Scope</text>
+  <rect x="216" y="118" width="200" height="40" rx="10" class="select"/>
+  <text x="244" y="144" class="small-strong">Org leader view</text>
+
+  <rect x="110" y="176" width="1600" height="88" rx="18" class="panel-soft"/>
+
+  <g>
+    <rect x="130" y="192" width="220" height="56" rx="12" class="card"/>
+    <text x="153" y="213" class="metric-label">Overall maturity</text>
+    <text x="153" y="233" class="metric">2.7 / 5</text>
+
+    <rect x="380" y="192" width="220" height="56" rx="12" class="card"/>
+    <text x="403" y="213" class="metric-label">Priority gaps</text>
+    <text x="403" y="233" class="metric">9</text>
+
+    <rect x="630" y="192" width="220" height="56" rx="12" class="card"/>
+    <text x="653" y="213" class="metric-label">Not assessed</text>
+    <text x="653" y="233" class="metric">14</text>
+
+    <rect x="880" y="192" width="220" height="56" rx="12" class="card"/>
+    <text x="903" y="213" class="metric-label">Stages active</text>
+    <text x="903" y="233" class="metric">5</text>
+
+    <rect x="1130" y="192" width="220" height="56" rx="12" class="card"/>
+    <text x="1153" y="213" class="metric-label">Capabilties</text>
+    <text x="1153" y="233" class="metric">26</text>
+
+    <rect x="1380" y="192" width="300" height="56" rx="12" class="card"/>
+    <text x="1403" y="213" class="metric-label">Leadership actions</text>
+    <text x="1403" y="233" class="metric">3 decisions</text>
+  </g>
+
+  <rect x="110" y="290" width="1600" height="900" rx="18" class="panel-soft"/>
+
+  <g>
+    <rect x="130" y="317" width="1560" height="54" rx="12" class="header-row"/>
+    <text x="155" y="349" class="small-strong">Stage</text>
+    <text x="355" y="349" class="small-strong">Capability</text>
+    <text x="760" y="349" class="small-strong">Default</text>
+    <text x="860" y="349" class="small-strong">Override</text>
+    <text x="960" y="349" class="small-strong">Effective</text>
+    <text x="1060" y="349" class="small-strong">Current</text>
+    <text x="1155" y="349" class="small-strong">Target</text>
+    <text x="1245" y="349" class="small-strong">Gap</text>
+    <text x="1315" y="349" class="small-strong">Priority</text>
+    <text x="1395" y="349" class="small-strong">Status</text>
+    <text x="1500" y="349" class="small-strong">Inputs</text>
+  </g>
+
+  <g>
+    <rect x="130" y="387" width="1560" height="122" rx="14" class="row-alt"/>
+    <text x="155" y="430" class="stage">Discover &amp; Plan</text>
+    <text x="355" y="421" class="cap">Customer research</text>
+    <text x="355" y="445" class="note">Interview synthesis and issue clustering are still manual.</text>
+    <rect x="752" y="411" width="90" height="34" rx="10" class="cell"/><text x="797" y="434" class="small" text-anchor="middle">Use default</text>
+    <rect x="852" y="411" width="90" height="34" rx="10" class="select"/><text x="897" y="434" class="small" text-anchor="middle">Central</text>
+    <rect x="952" y="411" width="90" height="34" rx="10" class="cell"/><text x="997" y="434" class="small" text-anchor="middle">Team-Specific</text>
+    <rect x="1052" y="411" width="85" height="34" rx="10" class="cell"/><text x="1094" y="434" class="small" text-anchor="middle">L1</text>
+    <rect x="1142" y="411" width="85" height="34" rx="10" class="cell"/><text x="1184" y="434" class="small" text-anchor="middle">L3</text>
+    <rect x="1232" y="411" width="70" height="34" rx="10" class="tag-amber"/><text x="1267" y="434" class="small" text-anchor="middle">+2</text>
+    <rect x="1310" y="411" width="78" height="34" rx="10" class="tag"/><text x="1349" y="434" class="small" text-anchor="middle">P1</text>
+    <rect x="1394" y="411" width="82" height="34" rx="10" class="tag"/><text x="1435" y="434" class="small" text-anchor="middle">Not assessed</text>
+    <rect x="1496" y="411" width="166" height="34" rx="10" class="cell"/><text x="1579" y="434" class="small" text-anchor="middle">See inputs</text>
+  </g>
+
+  <g>
+    <rect x="130" y="521" width="1560" height="122" rx="14" class="row"/>
+    <text x="155" y="564" class="stage">Discover &amp; Plan</text>
+    <text x="355" y="555" class="cap">Roadmap prioritization</text>
+    <text x="355" y="579" class="note">Leadership decisions still rely on manual tradeoff analysis.</text>
+    <rect x="752" y="545" width="90" height="34" rx="10" class="cell"/><text x="797" y="568" class="small" text-anchor="middle">Use default</text>
+    <rect x="852" y="545" width="90" height="34" rx="10" class="select"/><text x="897" y="568" class="small" text-anchor="middle">Central</text>
+    <rect x="952" y="545" width="90" height="34" rx="10" class="cell"/><text x="997" y="568" class="small" text-anchor="middle">Hybrid</text>
+    <rect x="1052" y="545" width="85" height="34" rx="10" class="cell"/><text x="1094" y="568" class="small" text-anchor="middle">L2</text>
+    <rect x="1142" y="545" width="85" height="34" rx="10" class="cell"/><text x="1184" y="568" class="small" text-anchor="middle">L4</text>
+    <rect x="1232" y="545" width="70" height="34" rx="10" class="tag-amber"/><text x="1267" y="568" class="small" text-anchor="middle">+2</text>
+    <rect x="1310" y="545" width="78" height="34" rx="10" class="tag-rose"/><text x="1349" y="568" class="small" text-anchor="middle">P0</text>
+    <rect x="1394" y="545" width="82" height="34" rx="10" class="tag-green"/><text x="1435" y="568" class="small" text-anchor="middle">Piloting</text>
+    <rect x="1496" y="545" width="166" height="34" rx="10" class="cell"/><text x="1579" y="568" class="small" text-anchor="middle">See inputs</text>
+  </g>
+
+  <g>
+    <rect x="130" y="655" width="1560" height="122" rx="14" class="row-alt"/>
+    <text x="155" y="698" class="stage">Define &amp; Design</text>
+    <text x="355" y="689" class="cap">PRD drafting</text>
+    <text x="355" y="713" class="note">Patterns are already reusable across teams.</text>
+    <rect x="752" y="679" width="90" height="34" rx="10" class="cell"/><text x="797" y="702" class="small" text-anchor="middle">Use default</text>
+    <rect x="852" y="679" width="90" height="34" rx="10" class="select"/><text x="897" y="702" class="small" text-anchor="middle">Central</text>
+    <rect x="952" y="679" width="90" height="34" rx="10" class="cell"/><text x="997" y="702" class="small" text-anchor="middle">Central</text>
+    <rect x="1052" y="679" width="85" height="34" rx="10" class="cell"/><text x="1094" y="702" class="small" text-anchor="middle">L2</text>
+    <rect x="1142" y="679" width="85" height="34" rx="10" class="cell"/><text x="1184" y="702" class="small" text-anchor="middle">L4</text>
+    <rect x="1232" y="679" width="70" height="34" rx="10" class="tag-amber"/><text x="1267" y="702" class="small" text-anchor="middle">+1</text>
+    <rect x="1310" y="679" width="78" height="34" rx="10" class="tag-rose"/><text x="1349" y="702" class="small" text-anchor="middle">P0</text>
+    <rect x="1394" y="679" width="82" height="34" rx="10" class="tag-green"/><text x="1435" y="702" class="small" text-anchor="middle">Piloting</text>
+    <rect x="1496" y="679" width="166" height="34" rx="10" class="cell"/><text x="1579" y="702" class="small" text-anchor="middle">See inputs</text>
+  </g>
+
+  <g>
+    <rect x="130" y="789" width="1560" height="122" rx="14" class="row"/>
+    <text x="155" y="832" class="stage">Build &amp; Validate</text>
+    <text x="355" y="823" class="cap">AI-assisted coding</text>
+    <text x="355" y="847" class="note">Engineers are using AI widely but with inconsistent guardrails.</text>
+    <rect x="752" y="813" width="90" height="34" rx="10" class="cell"/><text x="797" y="836" class="small" text-anchor="middle">Use default</text>
+    <rect x="852" y="813" width="90" height="34" rx="10" class="select"/><text x="897" y="836" class="small" text-anchor="middle">Central</text>
+    <rect x="952" y="813" width="90" height="34" rx="10" class="cell"/><text x="997" y="836" class="small" text-anchor="middle">Team-Specific</text>
+    <rect x="1052" y="813" width="85" height="34" rx="10" class="cell"/><text x="1094" y="836" class="small" text-anchor="middle">L2</text>
+    <rect x="1142" y="813" width="85" height="34" rx="10" class="cell"/><text x="1184" y="836" class="small" text-anchor="middle">L4</text>
+    <rect x="1232" y="813" width="70" height="34" rx="10" class="tag-amber"/><text x="1267" y="836" class="small" text-anchor="middle">+2</text>
+    <rect x="1310" y="813" width="78" height="34" rx="10" class="tag-rose"/><text x="1349" y="836" class="small" text-anchor="middle">P0</text>
+    <rect x="1394" y="813" width="82" height="34" rx="10" class="tag-green"/><text x="1435" y="836" class="small" text-anchor="middle">Piloting</text>
+    <rect x="1496" y="813" width="166" height="34" rx="10" class="cell"/><text x="1579" y="836" class="small" text-anchor="middle">See inputs</text>
+  </g>
+</svg>

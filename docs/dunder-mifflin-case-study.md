@@ -35,13 +35,19 @@ These examples are intentionally presented early so the product story is anchore
 
 This is the live tracker view: each stage carries a single maturity signal, while the rows beneath it show the actual capability gaps driving that stage result. The design is intentionally stage-aware and capability-aware, so leaders can see the aggregate stage maturity without losing the operational detail that explains why that stage is a priority.
 
-### 2. Priority input editor
+### 2. Tracker editing view
+
+![Tracker editing view](./images/case-study/05-tracker-edit-view.svg)
+
+This is the working ledger leaders use to assess a capability in context. Each row shows the default, override, effective placement, current maturity, target maturity, gap, priority, status, and recorded note. That makes the tracker feel like a real operating system for capability decisions rather than a static scorecard.
+
+### 3. Priority input editor
 
 ![Priority editor](./images/case-study/03-priority-editor.svg)
 
 The priority model is transparent: leaders tune the real inputs (time spent, frequency, AI potential, scalability, risk, feasibility) and the score updates immediately. This creates trust because the decision is tied to evidence, not a subjective guess.
 
-### 3. Editable capability library
+### 4. Editable capability library
 
 ![Capability library](./images/case-study/04-capability-library.svg)
 
