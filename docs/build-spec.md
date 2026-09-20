@@ -9,12 +9,14 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 ## 1. Core concepts
 
 - **Org/Domain**: free-text field identifying the leader's area (e.g. "Payments Platform", "EMEA Support"). Replaces any profession/function split — one leader's Org/Domain spans everything they own.
-- **PDLC stage**: one of the 7 fixed stages (section 3.5). Every entry belongs to exactly one stage.
+- **PDLC stage**: a fixed lifecycle stage, with a shorter executive view (7 key stages) and a fuller operational capability map underneath (discover, strategy, define, design, build, validate, release, adopt, operate, support, incident, learn).
 - **Stage Pulse entry**: one row per Org/Domain × Stage. Lightweight — no six-axis scoring.
 - **Capability entry**: one row per Org/Domain × Stage × Capability. Full scoring, computed priority, and placement.
 - **Maturity level**: L1–L5, used identically at both tiers (section 3.1).
 - **Placement**: Central / Team-Specific / Hybrid, either taken from a capability's library default or computed from four yes/no answers (section 3.4), with a leader-level override always available.
 - **Placement override**: a manual override that can change a capability from its default/computed value to Central, Hybrid, or Team-Specific at the Org/Domain level, while still preserving the underlying default and the final effective model.
+- **AI Opportunity Canvas**: the structured narrative for any capability: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
+- **Playbook**: the full transformation method behind the tracker — not only a maturity model. It should clearly guide a leader from mapping the PDLC to prioritizing, standardizing, automating, and measuring end-to-end outcomes.
 
 ---
 
@@ -223,12 +225,36 @@ Organized by **stage**, not by profession, since one leader owns all of these ac
 
 ## 4. Views the tool needs
 
+The tool should be built as a playbook + tracker, not just a maturity scorecard. There are two complementary layers:
+
+1. **Executive layer** — the fast, leadership-friendly heatmap across the 7 summary stages (Discover & Plan, Define & Design, Build & Validate, Release & Customer Adoption, Operate, Support & Resilience, Learn & Optimize, Lead & Run the Org). This is the first screen and should be visually clean and quick to consume.
+2. **Operational layer** — the fuller PDLC capability atlas used to identify work, bottlenecks, and AI opportunity end-to-end. This layer is more detailed and can span the full lifecycle: discover, strategy, define, design, build, validate, release, adopt, operate, support, incident, learn.
+
+The required views are:
+
 1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries). This is the fast, comprehensive view.
 2. **Capability tracker table** — every capability entry, sortable by `priority` descending, filterable by Org/Domain, stage, placement, and tier. Shows current→target maturity, priority score + tier, placement, status.
-3. **Top priorities (org-wide)** — top 10–15 capability entries by `priority`, across every Org/Domain, for the investment shortlist.
-4. **Central / Team-Specific / Hybrid grouped view** — every capability entry grouped by `placementEffective`, with the default/computed placement visible alongside any org override, so leadership can see what to build once vs. leave to teams.
-5. **Impact showcase** — every capability entry with a non-empty `result`, shown as a before/after card (baseline → result), grouped or filterable by Org/Domain — this is the leadership-ready proof-of-productivity view.
-6. **Override-aware portal editing** — the UI must allow a leader to override a capability's placement from the default/computed value to Central, Hybrid, or Team-Specific, and should display the change as `default`, `override`, and `effective` values side by side.
+3. **Full PDLC capability map** — a detailed capability atlas that covers the broader lifecycle beyond the short executive stage list, so it includes discovery, strategy, plan, define, design, build, test, release, adopt, operate, support, incidents, and continuous improvement.
+4. **Top priorities (org-wide)** — top 10–15 capability entries by `priority`, across every Org/Domain, for the investment shortlist.
+5. **Central / Team-Specific / Hybrid grouped view** — every capability entry grouped by `placementEffective`, with the default/computed placement visible alongside any org override, so leadership can see what to build once vs. leave to teams.
+6. **Impact showcase** — every capability entry with a non-empty `result`, shown as a before/after card (baseline → result), grouped or filterable by Org/Domain — this is the leadership-ready proof-of-productivity view.
+7. **Override-aware portal editing** — the UI must allow a leader to override a capability's placement from the default/computed value to Central, Hybrid, or Team-Specific, and should display the change as `default`, `override`, and `effective` values side by side.
+8. **AI Opportunity Canvas** — a standard form attached to each capability asking: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
+
+### 4.1 Workbook structure recommendation
+
+To keep the tool practical and reusable, the spreadsheet/app should be organized into multiple tabs rather than a single giant grid:
+
+- Tab 1 — PDLC Capability Map
+- Tab 2 — Stage Pulse / Heatmap
+- Tab 3 — Maturity Assessment
+- Tab 4 — Productivity Baseline
+- Tab 5 — AI / Automation Opportunity Canvas
+- Tab 6 — Prioritization
+- Tab 7 — Roadmap
+- Tab 8 — Metrics and Outcomes
+
+This keeps the executive view light while allowing deeper operational analysis without overloading leaders with low-level detail.
 
 ## 5. Implementation notes
 
@@ -237,6 +263,8 @@ Organized by **stage**, not by profession, since one leader owns all of these ac
 - Pre-fill the capability library (3.5) as selectable options per stage so leaders pick from it rather than typing capability names from scratch — but always allow a free-text "custom capability" entry, since the library is a starting point, not a ceiling.
 - Show `placementDefault` immediately when a capability is selected from the library, before any of the 4 questions are answered — it's a hint, not a lock, and speeds up the common case.
 - Don't force capability-level entry for every stage. The UI should make it easy to do the Stage Pulse for all 7 stages first, then open the capability form only for stages a leader chooses to drill into.
+- Keep the broader PDLC capability taxonomy in the playbook, even if the executive maturity heatmap stays at 7 summary stages. The leadership view should be clean and digestible; the deeper capability atlas should capture the full end-to-end workflow, including discovery, strategy, adoption, support, incidents, and learning.
+- The tool should clearly communicate that L5 is not the target for every capability. Ownership should be based on value, volume, complexity, risk, and feasibility — not on a blanket assumption that every workflow should be AI-native.
 
 ## 6. Worked example rows (for testing the build)
 
