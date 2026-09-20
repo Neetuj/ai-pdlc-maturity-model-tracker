@@ -13,7 +13,8 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 - **Stage Pulse entry**: one row per Org/Domain × Stage. Lightweight — no six-axis scoring.
 - **Capability entry**: one row per Org/Domain × Stage × Capability. Full scoring, computed priority, and placement.
 - **Maturity level**: L1–L5, used identically at both tiers (section 3.1).
-- **Placement**: Central / Team-Specific / Hybrid, either taken from a capability's library default or computed from four yes/no answers (section 3.4), with manual override always available.
+- **Placement**: Central / Team-Specific / Hybrid, either taken from a capability's library default or computed from four yes/no answers (section 3.4), with a leader-level override always available.
+- **Placement override**: a manual override that can change a capability from its default/computed value to Central, Hybrid, or Team-Specific at the Org/Domain level, while still preserving the underlying default and the final effective model.
 
 ---
 
@@ -51,7 +52,10 @@ Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org
 | `feasibility` | 1–5 | anchored scale (3.2) |
 | `q1`…`q4` | boolean | placement questions (3.4) |
 | `placementDefault` | enum | from the library (3.5), shown before any answers |
-| `placementFinal` | enum (optional) | manual override; if unset, use the computed suggestion (3.4), falling back to `placementDefault` when no questions are answered yet |
+| `placementOverride` | enum (optional) | leader-selected override for this Org/Domain: Central / Hybrid / Team-Specific; blank means "use default/computed" |
+| `placementEffective` | enum | final model used for reporting and scoring. Derived as `placementOverride` if set, otherwise `placementComputed` or `placementDefault` |
+| `placementComputed` | enum (optional) | value created from the four yes/no questions (3.4) |
+| `placementOverrideReason` | text (optional) | why the org deviates from the default/computed setting |
 | `aiOpportunityNotes` | text | what AI would actually do here |
 | `status` | enum | Not started / Piloting / Scaled / Deprioritized |
 | `baseline` | text | e.g. "6 hrs/week manual" |
@@ -112,17 +116,28 @@ Four yes/no questions per capability:
 
 ```
 if Q3 and (not Q1 or not Q2):
-    placement = "Team-Specific"
+    placementComputed = "Team-Specific"
 elif Q1 and Q2 and not Q3:
-    placement = "Central"
+    placementComputed = "Central"
 else:
-    placement = "Hybrid"
+    placementComputed = "Hybrid"
 
-if Q4 and placement != "Central":
-    placement = placement + " (central governance required)"
+if Q4 and placementComputed != "Central":
+    placementComputed = placementComputed + " (central governance required)"
 ```
 
-`placementFinal` overrides this when a leader sets it explicitly; otherwise use the computed value; if no questions have been answered yet, show `placementDefault` from the library below as a starting hint.
+`placementOverride` is always optional and always wins when set by a leader at the Org/Domain level. The final value shown to users is `placementEffective`:
+
+```
+if placementOverride is set:
+    placementEffective = placementOverride
+else if placementComputed is set:
+    placementEffective = placementComputed
+else:
+    placementEffective = placementDefault
+```
+
+This preserves the default library model as the baseline, while allowing a leader to document how their organization actually operates. Leaders should be able to choose “Use default”, “Central”, “Hybrid”, or “Team-Specific” from the UI without losing the original default value behind the scenes.
 
 ### 3.5 Capability library — 7 stages, with default placement
 
@@ -211,8 +226,9 @@ Organized by **stage**, not by profession, since one leader owns all of these ac
 1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries). This is the fast, comprehensive view.
 2. **Capability tracker table** — every capability entry, sortable by `priority` descending, filterable by Org/Domain, stage, placement, and tier. Shows current→target maturity, priority score + tier, placement, status.
 3. **Top priorities (org-wide)** — top 10–15 capability entries by `priority`, across every Org/Domain, for the investment shortlist.
-4. **Central / Team-Specific / Hybrid grouped view** — every capability entry grouped by `placementFinal` (or computed placement), so leadership can see what to build once vs. leave to teams.
+4. **Central / Team-Specific / Hybrid grouped view** — every capability entry grouped by `placementEffective`, with the default/computed placement visible alongside any org override, so leadership can see what to build once vs. leave to teams.
 5. **Impact showcase** — every capability entry with a non-empty `result`, shown as a before/after card (baseline → result), grouped or filterable by Org/Domain — this is the leadership-ready proof-of-productivity view.
+6. **Override-aware portal editing** — the UI must allow a leader to override a capability's placement from the default/computed value to Central, Hybrid, or Team-Specific, and should display the change as `default`, `override`, and `effective` values side by side.
 
 ## 5. Implementation notes
 
