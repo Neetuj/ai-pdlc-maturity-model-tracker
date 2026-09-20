@@ -1,84 +1,107 @@
 # AI-PDLC Maturity Model Tracker
 
-A simple way for leaders to see where AI is improving the work across the product lifecycle, where the gaps still are, and where to invest next.
+A leadership tool for turning AI work into measurable business impact across the product lifecycle.
 
-## Why this exists
+This is a capability-based operating model, not a tool-usage dashboard.
 
-Most teams talk about AI adoption, but they do not have a common way to measure whether it is actually improving the work. The problem is not whether people are using AI tools. The problem is whether the organization is moving from manual, slow, inconsistent work to more scalable, reliable, and customer-friendly execution.
+## The problem it solves
 
-This tracker gives leaders a shared language for that shift.
+Most organizations do not have a shared way to answer three critical questions:
 
-## What it does
+- Where are we actually stuck in the product lifecycle?
+- Which work is worth automating or augmenting with AI?
+- Are we improving real outcomes, or just adding more AI activity?
 
-- Scores the maturity of each PDLC stage and capability from L1 to L5
-- Identifies where the highest-value AI opportunities are
-- Separates org-level defaults from team-specific capabilities
-- Tracks whether a capability is not started, piloting, or scaled
-- Measures outcomes such as cycle time, quality, customer experience, resilience, and capacity
+Without a common framework, AI conversations stay subjective. Teams talk about adoption, pilots, and experimentation, but they struggle to connect those efforts to business value.
 
-## Who it is for
+This tracker gives leaders a common language for assessing maturity, prioritizing the right capabilities, and tracking the outcomes that matter.
 
-Leaders across product, engineering, delivery, operations, support, and platform. One leader can assess their full remit without splitting everything by function. Moreover, the roles and functions are evolving rapidly in the age of AI and merging, but the capabilities required across the PDLC remain largely stable regardless of which professional, team, or agent performs the task.
+## Why leaders should use it
 
-## How it works
+This is not a tool for measuring how many people used AI. It is a tool for measuring whether the organization is getting better at the actual work.
 
-1. Start with a quick Stage Pulse across all 7 PDLC stages.
-2. Identify the stages with the biggest opportunity.
-3. Drill into the relevant capabilities.
-4. Score maturity, effort, impact, risk, and feasibility.
-5. Prioritize the capabilities that matter most.
-6. Track the before/after outcome data and scale only what proves value.
+It helps leaders:
 
-## What leaders track
+- identify the highest-impact PDLC capabilities
+- score maturity consistently across teams and domains
+- distinguish org-wide capabilities from team-specific ones
+- prioritize investment based on value, risk, and feasibility
+- track whether AI is improving cycle time, quality, customer experience, and resilience
 
-The core question is not whether the team is using AI. The core question is whether the organization is improving the real work.
+## What it measures
 
-### North-star outcome metrics
+The tracker focuses on outcome-based metrics, not tool adoption alone.
 
-- Cycle time reduction across planning, build, release, and support
-- Quality improvement: fewer defects, less rework, stronger test confidence
-- Customer impact: faster issue resolution, better onboarding, higher customer value delivery
-- Reliability: faster incident detection, shorter MTTR, more stable operations
-- Capacity gain: less manual effort and more time for higher-value work
-- Maturity movement: the capability moves from L1/L2 toward L3/L4/L5 over time
+### North-star outcomes
+
+- cycle time reduction
+- quality improvement and reduced rework
+- faster customer issue resolution
+- lower incident recovery time and higher reliability
+- capacity freed up for higher-value work
+- movement from manual or assisted work toward standardized and AI-native execution
 
 ### Leading indicators
 
-- Maturity movement per stage and capability
-- Priority distribution across P0/P1/P2
-- Pilot-to-scale conversion rate
-- Coverage of key capabilities and owners
+- maturity movement by stage and capability
+- pilot-to-scale conversion rate
+- capability coverage and ownership
+- priority distribution across P0/P1/P2
 
 ### Lagging indicators
 
-- Before/after outcome impact for scaled capabilities
-- Reduction in manual work, defects, and resolution times
-- Measurable gains in throughput, quality, and customer outcomes
+- before/after improvement on key workflows
+- reduction in manual effort and defects
+- faster release and support cycles
+- measurable gains in customer and operational outcomes
 
-## Why it matters
+## How to use it
 
-This is not a dashboard about tool usage. It is a structured way to turn AI from scattered experimentation into systematic business improvement.
+1. Start with a quick Stage Pulse across all 7 PDLC stages.
+2. Identify the stages with the biggest gap or opportunity.
+3. Drill into the relevant capabilities.
+4. Score maturity, effort, risk, feasibility, and outcome impact.
+5. Decide what to centralize, what to keep local, and what to treat as hybrid.
+6. Track the before/after impact and scale only what proves value.
 
-The goal is to diagnose the real bottlenecks, prioritize the right capabilities, prove the business impact, and scale the operating model.
+## Who it is for
+
+This is designed for leaders across product, engineering, delivery, operations, support, and platform. The model helps one leader assess their full remit without forcing work to be split by role or job title. In the age of AI, roles are changing quickly, but the capabilities required across the lifecycle remain a stable way to organize work.
+
+## What problem it solves
+
+It turns AI transformation from vague experimentation into a structured operating model:
+
+- diagnose the real work that matters
+- prioritize the highest-value opportunities
+- set a target maturity state
+- measure the real outcomes being improved
+- scale the operating model only when the evidence is strong
 
 ## Project status
 
-This repo contains the working concept, prototype, and build spec for the tracker. The detailed logic and data model live in [`docs/build-spec.md`](docs/build-spec.md).
+This repo contains the working concept, prototype, and build spec for the tracker. The technical data model and logic live in [`docs/build-spec.md`](docs/build-spec.md).
 
-For a realistic example of how the tracker should look in practice, see the worked example rows and sample data in [`docs/build-spec.md`](docs/build-spec.md). Those examples help show how a real team or org would populate the tracker and what the output should look like.
+For a realistic example of how a leader uses the tracker in practice, see the Dunder Mifflin case study in [`docs/dunder-mifflin-case-study.md`](docs/dunder-mifflin-case-study.md).
 
-## Example: Dunder Mifflin
+## Background
 
-A short example helps explain how the tracker works in practice. See the fuller walkthrough in the project example documentation and sample rows in [`docs/build-spec.md`](docs/build-spec.md).
+This project reflects a product mindset applied to a complex organizational problem: instead of reacting to AI noise, pressure, or pilot churn, leaders need a way to break a large and ambiguous transformation into clear, manageable decisions.
 
-In the example, Michael Scott is the org leader and the team leaders below each assess the capabilities relevant to their remit:
+The real challenge is not simply "How do we use AI?" It is: "Which part of the work matters most, how do we improve it systematically, and how do we know if the investment is actually worth it?"
 
-- Pam focuses on customer experience and service enablement
-- Jim focuses on product and engineering execution
-- Dwight focuses on operations and field execution
-- Angela focuses on governance, control, and operational risk
+In many organizations, the common failure pattern is familiar:
 
-Each leader fills in the same inputs for the capabilities in scope, while Michael rolls up the results to see which capabilities should be funded centrally, locally, or in a hybrid model. The org-level decision is based on outcome impact, not on function labels.
+- lots of experimentation in different directions
+- no shared operating model or common maturity language
+- too much focus on tooling instead of business outcomes
+- fragmented investments without clear owners or measurable success criteria
+- AI work that stays in pilot mode because there is no path from experiment to scale
+- leaders hearing different stories about progress without a consistent way to compare them
+
+This project is designed to reduce that noise. It brings clarity to the work, explains where value is likely to be created, and creates a repeatable way to move from ambiguity to action.
+
+The product mindset matters here because it forces us to think holistically: define the problem, break it into the right parts, prioritize based on value, measure the outcome, and iterate with evidence instead of intuition.
 
 ## Repository structure
 
