@@ -359,8 +359,18 @@ function renderHeatmap() {
   levels.forEach((label) => cells.push(`<div class="heatmap-header">${label}</div>`));
 
   stages.forEach((stage) => {
-    cells.push(`<div class="heatmap-stage">${stage}</div>`);
     const relevantRows = state.filter((item) => item.stage === stage && item.included !== false);
+    const capabilityNames = relevantRows.map((item) => item.capability).filter(Boolean);
+    const capabilityText = capabilityNames.length ? capabilityNames.slice(0, 3).join(' • ') : 'No mapped capabilities';
+    const extraCount = capabilityNames.length > 3 ? ` +${capabilityNames.length - 3} more` : '';
+
+    cells.push(`
+      <div class="heatmap-stage">
+        <span>${stage}</span>
+        <small>${capabilityText}${extraCount}</small>
+      </div>
+    `);
+
     const assessedRows = relevantRows.filter((item) => item.status && item.status !== 'Not assessed' && item.status !== 'N/A');
 
     if (assessedRows.length === 0) {
@@ -372,7 +382,7 @@ function renderHeatmap() {
       const levelMatches = assessedRows.filter((item) => Number(item.currentMaturity) === Number(level.replace('L', ''))).length;
       const value = levelMatches > 0 ? `${levelMatches}` : '—';
       const className = levelMatches > 0 ? `heatmap-cell level-${Number(level.replace('L', ''))}` : 'heatmap-cell';
-      cells.push(`<div class="${className}">${value}</div>`);
+      cells.push(`<div class="${className}" title="${stage}: ${relevantRows.map((item) => item.capability).join(', ')}">${value}</div>`);
     });
   });
 

@@ -257,7 +257,7 @@ The system should also make the transformation path explicit: diagnose the capab
 
 The required views are:
 
-1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries). This is the fast, comprehensive view.
+1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries), and paired with the mapped capability names under each stage. This is the fast, comprehensive view.
 2. **Capability tracker table** — every capability entry, sortable by `priority` descending, filterable by Org/Domain, stage, placement, and tier. Shows current→target maturity, priority score + tier, placement, status.
 3. **Full PDLC capability map** — a detailed capability atlas that covers the broader lifecycle beyond the short executive stage list, so it includes discovery, strategy, plan, define, design, build, test, release, adopt, operate, support, incidents, and continuous improvement.
 4. **Top priorities (org-wide)** — top 10–15 capability entries by `priority`, across every Org/Domain, for the investment shortlist.
@@ -266,7 +266,15 @@ The required views are:
 7. **Override-aware portal editing** — the UI must allow a leader to override a capability's placement from the default/computed value to Central, Hybrid, or Team-Specific, and should display the change as `default`, `override`, and `effective` values side by side.
 8. **AI Opportunity Canvas** — a standard form attached to each capability asking: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
 
-### 4.1 Outcome-tracking metric framework
+### 4.1 Capability-aware heatmap definition
+
+The executive heatmap must always show the stage and the mapped capability set behind it. A cell or stage row is not meaningful if it only expresses a maturity value without the list of capabilities that define that stage's operating model.
+
+In other words, every stage should be treated as a bundle of capability entries, not as an abstract label. The UI should make these capabilities visible alongside the stage summary so leaders know what work is actually being scored in that stage.
+
+This applies to the org-level heatmap, team-level heatmap, and the detailed capability view. If a stage is labeled "Build & Validate," the user should immediately see the major capabilities mapped under it such as AI-assisted coding, test creation & automation, release readiness, and security reviews.
+
+### 4.2 Outcome-tracking metric framework
 
 The product is not trying to optimize for tool adoption alone. It is trying to improve the underlying business outcomes of the work being done across the PDLC. The metrics layer must therefore separate:
 

@@ -36,11 +36,13 @@ The reason this matters is simple: as critical capabilities move up the maturity
 
 ### What the tracker measures today
 
-- maturity by stage and capability
+- maturity by stage and the capabilities mapped into that stage
 - capability coverage and ownership across teams and domains
 - priority distribution across P0/P1/P2
 - status movement from not started to piloting to scaled adoption
 - org-wide, hybrid, and team-specific capability placement
+
+The heatmap is not just a stage score. Each stage is explicitly mapped to the capabilities that belong there, so leaders can see both the maturity signal and the actual workstreams represented in that stage.
 
 ### North-star outcomes
 

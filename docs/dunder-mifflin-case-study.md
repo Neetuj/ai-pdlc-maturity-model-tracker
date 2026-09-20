@@ -71,17 +71,17 @@ Angela leads the risk, controls, and compliance org. That includes governance, p
 
 ## Sample org heatmap from the case study
 
-The tracker should default to a neutral heatmap state for every stage until the leader has reviewed a capability. In this example, the heatmap reflects a mix of assessed and unassessed areas. The gray cells indicate that a capability has not yet been reviewed; the colored cells indicate that the org has already assessed the capability and assigned a maturity level.
+The tracker should default to a neutral heatmap state for every stage until the leader has reviewed a capability. In this example, the heatmap reflects a mix of assessed and unassessed areas. The gray cells indicate that a capability has not yet been reviewed; the colored cells indicate that the org has already assessed the capability and assigned a maturity level. Critically, each stage is paired with the actual capability set mapped to it, so the leader can immediately tell what work sits under each stage instead of reading a vague maturity label.
 
-| Stage | Heatmap status | Interpretation |
-| --- | --- | --- |
-| Discover & Plan | Gray / partially assessed | Some planning capabilities were reviewed, but the rest remains unassessed |
-| Define & Design | Gray / partially assessed | Key design and PRD work is known, but not all areas have been evaluated |
-| Build & Validate | Yellow / active assessment | AI-assisted coding and test automation are already in scope |
-| Release & Customer Adoption | Gray / limited signal | Customer onboarding is active, but a broader release view remains under review |
-| Operate, Support & Resilience | Yellow / active assessment | Incident detection and operational service capabilities are already being evaluated |
-| Learn & Optimize | Gray / emerging view | Some analytics work is known, but the full learning loop is still incomplete |
-| Lead & Run the Org | Gray / default baseline | Leadership and governance mechanics are not yet fully reviewed |
+| Stage | Mapped capabilities | Heatmap status | Interpretation |
+| --- | --- | --- | --- |
+| Discover & Plan | Customer research, roadmap prioritization | Gray / partially assessed | Some planning capabilities were reviewed, but the rest remains unassessed |
+| Define & Design | PRD drafting, architecture reviews, dependency mapping | Gray / partially assessed | Key design and PRD work is known, but not all areas have been evaluated |
+| Build & Validate | AI-assisted coding, test creation & automation, release readiness checks | Yellow / active assessment | AI-assisted coding and test automation are already in scope |
+| Release & Customer Adoption | Customer onboarding, release planning, training & enablement | Gray / limited signal | Customer onboarding is active, but a broader release view remains under review |
+| Operate, Support & Resilience | Incident detection, support ticket triage, SLA / SLO tracking | Yellow / active assessment | Incident detection and operational service capabilities are already being evaluated |
+| Learn & Optimize | Product analytics, customer feedback synthesis | Gray / emerging view | Some analytics work is known, but the full learning loop is still incomplete |
+| Lead & Run the Org | Capacity planning, stakeholder reporting, vendor management | Gray / default baseline | Leadership and governance mechanics are not yet fully reviewed |
 
 This is exactly how the heatmap should behave in the product: the default state is not “failed or weak,” it is simply “not assessed yet.” The heatmap updates as the leader scores the relevant capabilities and moves from a neutral baseline into an active operating picture.
 

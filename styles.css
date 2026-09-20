@@ -242,10 +242,22 @@ button {
 }
 
 .heatmap-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   text-align: left;
   background: #f8faff;
   font-weight: 700;
   color: var(--ink);
+  line-height: 1.25;
+}
+
+.heatmap-stage small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .heatmap-cell {
