@@ -14,7 +14,8 @@ const stageOptions = [
 const defaultState = [
   {
     id: 'customer-research',
-    org: 'Org A',
+    org: 'Pam Beesly',
+    parentOrg: 'Michael Scott',
     domain: 'Customer',
     team: 'Customer Experience',
     stage: 'Discover & Plan',
@@ -34,8 +35,31 @@ const defaultState = [
     notes: 'Interview synthesis and issue clustering are still manual.'
   },
   {
+    id: 'customer-research-root',
+    org: 'Michael Scott',
+    parentOrg: '',
+    domain: 'Corporate',
+    team: 'Leadership',
+    stage: 'Discover & Plan',
+    capability: 'Customer research',
+    defaultPlacement: 'Hybrid',
+    override: 'Central',
+    included: true,
+    selectionTier: 'Must have',
+    currentMaturity: 3,
+    targetMaturity: 4,
+    timeSpent: 4,
+    frequency: 4,
+    aiPotential: 4,
+    scalability: 4,
+    risk: 3,
+    feasibility: 5,
+    notes: 'Michael aggregates the customer insight view across orgs.'
+  },
+  {
     id: 'roadmap-prioritization',
-    org: 'Org B',
+    org: 'Jim Halpert',
+    parentOrg: 'Michael Scott',
     domain: 'Product',
     team: 'Product',
     stage: 'Discover & Plan',
@@ -56,7 +80,8 @@ const defaultState = [
   },
   {
     id: 'prd-drafting',
-    org: 'Org B',
+    org: 'Jim Halpert',
+    parentOrg: 'Michael Scott',
     domain: 'Product',
     team: 'Engineering',
     stage: 'Define & Design',
@@ -76,7 +101,8 @@ const defaultState = [
   },
   {
     id: 'architecture-design',
-    org: 'Org B',
+    org: 'Jim Halpert',
+    parentOrg: 'Michael Scott',
     domain: 'Product',
     team: 'Engineering',
     stage: 'Define & Design',
@@ -97,7 +123,8 @@ const defaultState = [
   },
   {
     id: 'ai-coding',
-    org: 'Org B',
+    org: 'Jim Halpert',
+    parentOrg: 'Michael Scott',
     domain: 'Product',
     team: 'Engineering',
     stage: 'Build & Validate',
@@ -118,7 +145,8 @@ const defaultState = [
   },
   {
     id: 'incident-triage',
-    org: 'Org C',
+    org: 'Dwight Schrute',
+    parentOrg: 'Michael Scott',
     domain: 'Operations',
     team: 'Service Operations',
     stage: 'Operate, Support & Resilience',
@@ -139,7 +167,8 @@ const defaultState = [
   },
   {
     id: 'customer-onboarding',
-    org: 'Org A',
+    org: 'Pam Beesly',
+    parentOrg: 'Michael Scott',
     domain: 'Customer',
     team: 'Delivery',
     stage: 'Release & Customer Adoption',
@@ -160,7 +189,8 @@ const defaultState = [
   },
   {
     id: 'product-analytics',
-    org: 'Org D',
+    org: 'Angela Martin',
+    parentOrg: 'Michael Scott',
     domain: 'Governance',
     team: 'Compliance',
     stage: 'Learn & Optimize',
@@ -324,24 +354,38 @@ function renderStageFilter() {
     .join('');
 }
 
+function getSelectedScopeRows(rows = state) {
+  let filtered = rows;
+
+  if (scopeState.org !== 'All orgs') {
+    filtered = filtered.filter((row) => {
+      const sameOrg = row.org === scopeState.org;
+      const underOrg = row.parentOrg === scopeState.org;
+      return sameOrg || underOrg;
+    });
+  }
+
+  if (scopeState.domain !== 'All domains') {
+    filtered = filtered.filter((row) => row.domain === scopeState.domain);
+  }
+
+  if (scopeState.team !== 'All teams') {
+    filtered = filtered.filter((row) => row.team === scopeState.team);
+  }
+
+  return filtered;
+}
+
 function getVisibleRows() {
   const selected = stageFilter.value;
   let rows = selected === 'All' ? state : state.filter((row) => row.stage === selected);
-
-  rows = rows.filter((row) => {
-    const orgMatch = scopeState.org === 'All orgs' || row.org === scopeState.org || scopeState.org === 'All orgs';
-    const domainMatch = scopeState.domain === 'All domains' || row.domain === scopeState.domain;
-    const teamMatch = scopeState.team === 'All teams' || row.team === scopeState.team;
-    return orgMatch && domainMatch && teamMatch;
-  });
-
-  return rows;
+  return getSelectedScopeRows(rows);
 }
 
 function renderScopeControls() {
-  const orgs = ['All orgs', ...new Set(state.map((row) => row.org))];
-  const domains = ['All domains', ...new Set(state.map((row) => row.domain))];
-  const teams = ['All teams', ...new Set(state.map((row) => row.team))];
+  const orgs = ['All orgs', 'Michael Scott', 'Pam Beesly', 'Jim Halpert', 'Dwight Schrute', 'Angela Martin'];
+  const domains = ['All domains', 'Corporate', 'Customer', 'Product', 'Operations', 'Governance'];
+  const teams = ['All teams', 'Leadership', 'Customer Experience', 'Product', 'Engineering', 'Delivery', 'Service Operations', 'Compliance'];
 
   orgScopeSelect.innerHTML = orgs.map((value) => `<option value="${value}" ${value === scopeState.org ? 'selected' : ''}>${value}</option>`).join('');
   domainScopeSelect.innerHTML = domains.map((value) => `<option value="${value}" ${value === scopeState.domain ? 'selected' : ''}>${value}</option>`).join('');
@@ -355,14 +399,33 @@ function renderHeatmap() {
   const levels = ['L1', 'L2', 'L3', 'L4', 'L5'];
   const cells = [];
 
+  const scopeRows = getSelectedScopeRows();
+
   cells.push('<div class="heatmap-header">Stage</div>');
   levels.forEach((label) => cells.push(`<div class="heatmap-header">${label}</div>`));
 
   stages.forEach((stage) => {
-    const relevantRows = state.filter((item) => item.stage === stage && item.included !== false);
+    const relevantRows = scopeRows.filter((item) => item.stage === stage && item.included !== false);
     const capabilityNames = relevantRows.map((item) => item.capability).filter(Boolean);
-    const capabilityText = capabilityNames.length ? capabilityNames.slice(0, 3).join(' • ') : 'No mapped capabilities';
-    const extraCount = capabilityNames.length > 3 ? ` +${capabilityNames.length - 3} more` : '';
+
+    const uniqueCapabilityEntries = {};
+    relevantRows.forEach((row) => {
+      if (!row.capability) return;
+      const normalized = row.capability.trim();
+      if (!uniqueCapabilityEntries[normalized]) {
+        uniqueCapabilityEntries[normalized] = [];
+      }
+      uniqueCapabilityEntries[normalized].push(Number(row.currentMaturity || 1));
+    });
+
+    const stageCapabilities = Object.keys(uniqueCapabilityEntries);
+    const averagedCapabilities = stageCapabilities.map((name) => {
+      const avg = uniqueCapabilityEntries[name].reduce((sum, value) => sum + value, 0) / uniqueCapabilityEntries[name].length;
+      return { name, avg };
+    });
+
+    const capabilityText = averagedCapabilities.length ? averagedCapabilities.slice(0, 3).map((item) => item.name).join(' • ') : 'No mapped capabilities';
+    const extraCount = averagedCapabilities.length > 3 ? ` +${averagedCapabilities.length - 3} more` : '';
 
     cells.push(`
       <div class="heatmap-stage">
@@ -379,10 +442,13 @@ function renderHeatmap() {
     }
 
     levels.forEach((level) => {
-      const levelMatches = assessedRows.filter((item) => Number(item.currentMaturity) === Number(level.replace('L', ''))).length;
-      const value = levelMatches > 0 ? `${levelMatches}` : '—';
-      const className = levelMatches > 0 ? `heatmap-cell level-${Number(level.replace('L', ''))}` : 'heatmap-cell';
-      cells.push(`<div class="${className}" title="${stage}: ${relevantRows.map((item) => item.capability).join(', ')}">${value}</div>`);
+      const targetLevel = Number(level.replace('L', ''));
+      const averagedMatches = averagedCapabilities.filter((item) => Math.round(item.avg) === targetLevel).length;
+      const directMatches = assessedRows.filter((item) => Number(item.currentMaturity) === targetLevel).length;
+      const totalMatches = Math.max(averagedMatches, directMatches);
+      const value = totalMatches > 0 ? `${totalMatches}` : '—';
+      const className = totalMatches > 0 ? `heatmap-cell level-${targetLevel}` : 'heatmap-cell';
+      cells.push(`<div class="${className}" title="${stage}: ${stageCapabilities.join(', ')}">${value}</div>`);
     });
   });
 

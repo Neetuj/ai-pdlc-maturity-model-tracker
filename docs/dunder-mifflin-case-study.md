@@ -4,7 +4,7 @@ This example shows how a leadership team can use the tracker to move from scatte
 
 ## Executive summary
 
-Michael Scott is the overall org leader. He has four leaders reporting into him, and each one leads a smaller business unit or operating org with multiple teams and functions underneath them:
+Michael Scott is the overall org leader. He has four leaders reporting into him, and each one leads a smaller business unit or operating org with multiple teams and functions underneath them. The tracker should be viewable at every level of this hierarchy: Scott sees the root roll-up, while Pam, Jim, Dwight, and Angela each see their own org view before those numbers are aggregated upward.
 
 - Pam Beesly — Org Leader, X
 - Jim Halpert — Org Leader, Y
@@ -87,7 +87,7 @@ This is exactly how the heatmap should behave in the product: the default state 
 
 ## Org-level roll-up
 
-Michael sees the aggregate view, not a fragmented collection of team responses. The tracker consolidates the assessment into a clearer operating picture.
+Michael sees the aggregate view, not a fragmented collection of team responses. The tracker consolidates the assessment into a clearer operating picture. When the same capability is assessed by multiple leaders at different levels of the org, the root view averages or consolidates those values rather than treating them as separate, conflicting inputs.
 
 | Stage | Capability | Aggregate view | Priority | Recommended investment |
 | --- | --- | --- | --- | --- |

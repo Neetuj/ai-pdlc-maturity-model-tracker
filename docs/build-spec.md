@@ -9,6 +9,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 ## 1. Core concepts
 
 - **Org/Domain**: free-text field identifying the leader's area (e.g. "Payments Platform", "EMEA Support"). Replaces any profession/function split — one leader's Org/Domain spans everything they own.
+- **Parent org / roll-up org**: the higher-level org owner that aggregates multiple child orgs. This is critical for a Scott-style roll-up, where Michael sees the consolidated picture across Pam, Jim, Dwight, and Angela.
 - **PDLC stage**: a fixed lifecycle stage, with a shorter executive view (7 key stages) and a fuller operational capability map underneath (discover, strategy, define, design, build, validate, release, adopt, operate, support, incident, learn).
 - **Stage Pulse entry**: one row per Org/Domain × Stage. Lightweight — no six-axis scoring.
 - **Capability entry**: one row per Org/Domain × Stage × Capability. Full scoring, computed priority, and placement.
@@ -39,7 +40,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 | `updatedAt` | datetime | |
 | `updatedBy` | text | who logged it |
 
-Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org/Domain) with almost no effort. This is the "too little" floor — every leader does this for all 7 stages.
+Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org/Domain) with almost no effort. This is the "too little" floor — every leader does this for all 7 stages. The heatmap should also be viewable at the root org level, where child-org assessments are aggregated and the same capability can be counted once per stage after averaging or consolidating duplicate entries.
 
 ### 2.2 Capability entry
 
