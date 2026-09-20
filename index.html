@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Native PDLC Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AI-Native PDLC Playbook</p>
+          <h1>Transformation Tracker</h1>
+        </div>
+        <div class="header-actions">
+          <label class="field-inline">
+            <span>Org/Domain</span>
+            <input id="orgDomain" type="text" value="X Team" />
+          </label>
+          <button id="resetDataBtn" class="secondary-btn">Reset demo data</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="summary-grid" id="summaryGrid"></section>
+
+        <section class="toolbar">
+          <label class="field-inline">
+            <span>Stage filter</span>
+            <select id="stageFilter">
+              <option value="All">All stages</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="formula-banner">
+          <strong>Priority formula:</strong>
+          effort × frequency × AI potential × scalability × risk/feasibility adjustment
+          <div class="formula-note">
+            Edit the six inputs in the Inputs column to change the score. Priority updates live as you tune Time, Freq, AI, Scale, Risk, and Feasibility.
+          </div>
+        </section>
+
+        <section id="priorityEditor" class="editor-modal hidden" aria-hidden="true">
+          <div class="editor-card">
+            <div class="editor-header">
+              <h2 id="editorTitle">Update priority inputs</h2>
+              <button id="closeEditorBtn" class="secondary-btn">Close</button>
+            </div>
+            <div id="editorBody" class="editor-body"></div>
+          </div>
+        </section>
+
+        <section class="table-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Capability</th>
+                <th>Default</th>
+                <th>Override</th>
+                <th>Effective</th>
+                <th>Current</th>
+                <th>Target</th>
+                <th>Gap</th>
+                <th>Priority</th>
+                <th>Inputs</th>
+                <th>Status</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="trackerBody"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
