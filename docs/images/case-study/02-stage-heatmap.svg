@@ -1,101 +1,154 @@
-<svg width="1400" height="840" viewBox="0 0 1400 840" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PDLC heatmap — stage pulse + capability gaps">
+<svg width="1800" height="1280" viewBox="0 0 1800 1280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PDLC heatmap — stage pulse + capability gaps">
   <defs>
     <style>
-      .title { font: 800 32px 'Segoe UI', Arial, sans-serif; fill: #1f2d3d; }
-      .row-label { font: 800 18px 'Segoe UI', Arial, sans-serif; fill: #22324a; }
-      .cell-label { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #54657b; }
-      .stage-header { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #52657c; }
-      .muted { font: 700 14px 'Segoe UI', Arial, sans-serif; fill: #6b7c90; }
-      .badge { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #fff; }
-      .light { fill: #ebf1fa; stroke: #dfe7f2; stroke-width: 1; }
-      .soft { fill: #f8fafc; stroke: #dfe7f2; stroke-width: 1; }
-      .stage { fill: #dfeaff; stroke: #c3d5f8; stroke-width: 1; }
-      .gray { fill: #edf2f7; stroke: #dfe7f2; stroke-width: 1; }
-      .amber { fill: #f9e8b8; stroke: #e4d28b; stroke-width: 1; }
-      .lav { fill: #e9f0ff; stroke: #d5ddff; stroke-width: 1; }
-      .red { fill: #f4d1d1; }
-      .red-ring { fill: #e56363; }
-      .empty { fill: #f3f6fa; stroke: #dfe7f2; stroke-width: 1; }
+      .title { font: 800 34px 'Segoe UI', Arial, sans-serif; fill: #1f2d3d; }
+      .stage-header { font: 800 18px 'Segoe UI', Arial, sans-serif; fill: #1f2d3d; }
+      .row-header { font: 700 17px 'Segoe UI', Arial, sans-serif; fill: #1f2d3d; }
+      .cell-label { font: 700 15px 'Segoe UI', Arial, sans-serif; fill: #51637c; }
+      .muted { font: 700 14px 'Segoe UI', Arial, sans-serif; fill: #6d7c8e; }
+      .badge { font: 800 11px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .stage-pill { fill: #edf4ff; stroke: #cfe0ff; stroke-width: 1; }
+      .row-box { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; }
+      .header-box { fill: #edf4ff; stroke: #dfe7f2; stroke-width: 1; }
+      .cell-gray { fill: #edf2f7; stroke: #dfe7f2; stroke-width: 1; }
+      .cell-amber { fill: #f8e7b0; stroke: #d7bf7a; stroke-width: 1; }
+      .cell-green { fill: #dff7e8; stroke: #a7dcb7; stroke-width: 1; }
+      .cell-blue { fill: #dfeafe; stroke: #bacbf4; stroke-width: 1; }
+      .p0 { fill: #e24d4d; }
+      .p1 { fill: #f2aa49; }
+      .p2 { fill: #4b7be8; }
     </style>
   </defs>
 
-  <rect width="1400" height="840" fill="#f3f6fb"/>
-  <rect x="56" y="42" width="1288" height="720" rx="22" fill="#ffffff" stroke="#dfe7f2"/>
+  <rect width="1800" height="1280" fill="#f5f7fb"/>
+  <rect x="60" y="44" width="1680" height="1140" rx="24" fill="#ffffff" stroke="#dfe7f2"/>
 
-  <text x="90" y="96" class="title">PDLC heatmap — stage pulse + capability gaps</text>
+  <text x="94" y="100" class="title">PDLC heatmap — stage pulse + capability gaps</text>
 
   <g>
-    <rect x="90" y="138" width="280" height="52" rx="12" class="light"/>
-    <text x="122" y="170" class="row-label">Stage</text>
+    <rect x="94" y="136" width="310" height="54" rx="12" class="header-box"/>
+    <text x="128" y="170" class="stage-header">Stage</text>
 
-    <rect x="372" y="138" width="120" height="52" rx="12" class="light"/>
-    <text x="420" y="170" class="cell-label" text-anchor="middle">L1</text>
-
-    <rect x="494" y="138" width="120" height="52" rx="12" class="light"/>
-    <text x="548" y="170" class="cell-label" text-anchor="middle">L2</text>
-
-    <rect x="616" y="138" width="120" height="52" rx="12" class="light"/>
-    <text x="670" y="170" class="cell-label" text-anchor="middle">L3</text>
-
-    <rect x="738" y="138" width="120" height="52" rx="12" class="light"/>
-    <text x="792" y="170" class="cell-label" text-anchor="middle">L4</text>
-
-    <rect x="860" y="138" width="120" height="52" rx="12" class="light"/>
-    <text x="914" y="170" class="cell-label" text-anchor="middle">L5</text>
+    <rect x="418" y="136" width="120" height="54" rx="12" class="header-box"/>
+    <text x="478" y="170" class="cell-label" text-anchor="middle">L1</text>
+    <rect x="542" y="136" width="120" height="54" rx="12" class="header-box"/>
+    <text x="602" y="170" class="cell-label" text-anchor="middle">L2</text>
+    <rect x="666" y="136" width="120" height="54" rx="12" class="header-box"/>
+    <text x="726" y="170" class="cell-label" text-anchor="middle">L3</text>
+    <rect x="790" y="136" width="120" height="54" rx="12" class="header-box"/>
+    <text x="850" y="170" class="cell-label" text-anchor="middle">L4</text>
+    <rect x="914" y="136" width="120" height="54" rx="12" class="header-box"/>
+    <text x="974" y="170" class="cell-label" text-anchor="middle">L5</text>
+    <rect x="1432" y="136" width="250" height="54" rx="12" class="header-box"/>
+    <text x="1557" y="170" class="cell-label" text-anchor="middle">Stage avg</text>
   </g>
 
   <g>
-    <rect x="90" y="210" width="280" height="62" rx="14" class="stage"/>
-    <text x="122" y="248" class="row-label">Discover &amp; Plan</text>
-    <rect x="372" y="218" width="120" height="46" rx="10" class="gray"/>
-    <text x="432" y="247" class="muted" text-anchor="middle">—</text>
-    <rect x="494" y="218" width="120" height="46" rx="10" class="amber"/>
-    <text x="554" y="247" class="muted" text-anchor="middle">2</text>
-    <rect x="616" y="218" width="120" height="46" rx="10" class="gray"/>
-    <text x="676" y="247" class="muted" text-anchor="middle">—</text>
-    <rect x="738" y="218" width="120" height="46" rx="10" class="gray"/>
-    <text x="798" y="247" class="muted" text-anchor="middle">—</text>
-    <rect x="860" y="218" width="120" height="46" rx="10" class="gray"/>
-    <text x="920" y="247" class="muted" text-anchor="middle">—</text>
+    <rect x="94" y="206" width="1588" height="74" rx="14" class="stage-pill"/>
+    <text x="128" y="251" class="stage-header">Discover &amp; Plan</text>
+    <rect x="1432" y="216" width="250" height="52" rx="12" class="cell-green"/>
+    <text x="1557" y="248" class="muted" text-anchor="middle">L3</text>
   </g>
 
   <g>
-    <rect x="90" y="292" width="280" height="74" rx="14" class="soft"/>
-    <text x="118" y="326" class="row-label">Roadmap</text>
-    <text x="118" y="348" class="row-label">prioritization</text>
-    <circle cx="300" cy="326" r="25" class="red-ring"/>
-    <text x="300" y="332" class="badge" text-anchor="middle">P0</text>
-    <text x="300" y="347" class="badge" text-anchor="middle" font-size="10">Invest</text>
-    <text x="300" y="359" class="badge" text-anchor="middle" font-size="10">Now</text>
-    <rect x="372" y="299" width="120" height="54" rx="10" class="gray"/>
-    <text x="432" y="334" class="muted" text-anchor="middle">—</text>
-    <rect x="494" y="299" width="120" height="54" rx="10" class="amber"/>
-    <text x="554" y="334" class="muted" text-anchor="middle">1</text>
-    <rect x="616" y="299" width="120" height="54" rx="10" class="gray"/>
-    <text x="676" y="334" class="muted" text-anchor="middle">—</text>
-    <rect x="738" y="299" width="120" height="54" rx="10" class="gray"/>
-    <text x="798" y="334" class="muted" text-anchor="middle">—</text>
-    <rect x="860" y="299" width="120" height="54" rx="10" class="gray"/>
-    <text x="920" y="334" class="muted" text-anchor="middle">—</text>
+    <rect x="94" y="286" width="1588" height="120" rx="14" class="row-box"/>
+    <text x="128" y="325" class="row-header">Customer research</text>
+    <text x="128" y="354" class="row-header">Roadmap prioritization</text>
+    <circle cx="1640" cy="332" r="22" class="p1"/>
+    <text x="1640" y="338" class="badge" text-anchor="middle">P1</text>
+    <rect x="418" y="300" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="478" y="333" class="muted" text-anchor="middle">—</text>
+    <rect x="542" y="300" width="120" height="52" rx="10" class="cell-amber"/>
+    <text x="602" y="333" class="muted" text-anchor="middle">2</text>
+    <rect x="666" y="300" width="120" height="52" rx="10" class="cell-green"/>
+    <text x="726" y="333" class="muted" text-anchor="middle">3</text>
+    <rect x="790" y="300" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="850" y="333" class="muted" text-anchor="middle">—</text>
+    <rect x="914" y="300" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="974" y="333" class="muted" text-anchor="middle">—</text>
+    <rect x="1432" y="300" width="250" height="52" rx="12" class="cell-green"/>
+    <text x="1557" y="333" class="muted" text-anchor="middle">L3</text>
   </g>
 
   <g>
-    <rect x="90" y="386" width="280" height="74" rx="14" class="soft"/>
-    <text x="118" y="420" class="row-label">Customer</text>
-    <text x="118" y="442" class="row-label">research</text>
-    <circle cx="300" cy="420" r="25" class="red-ring"/>
-    <text x="300" y="426" class="badge" text-anchor="middle">P0</text>
-    <text x="300" y="441" class="badge" text-anchor="middle" font-size="10">Invest</text>
-    <text x="300" y="453" class="badge" text-anchor="middle" font-size="10">Now</text>
-    <rect x="372" y="393" width="120" height="54" rx="10" class="gray"/>
-    <text x="432" y="428" class="muted" text-anchor="middle">—</text>
-    <rect x="494" y="393" width="120" height="54" rx="10" class="amber"/>
-    <text x="554" y="428" class="muted" text-anchor="middle">1</text>
-    <rect x="616" y="393" width="120" height="54" rx="10" class="amber"/>
-    <text x="676" y="428" class="muted" text-anchor="middle">1</text>
-    <rect x="738" y="393" width="120" height="54" rx="10" class="gray"/>
-    <text x="798" y="428" class="muted" text-anchor="middle">—</text>
-    <rect x="860" y="393" width="120" height="54" rx="10" class="gray"/>
-    <text x="920" y="428" class="muted" text-anchor="middle">—</text>
+    <rect x="94" y="420" width="1588" height="74" rx="14" class="stage-pill"/>
+    <text x="128" y="465" class="stage-header">Define &amp; Design</text>
+    <rect x="1432" y="430" width="250" height="52" rx="12" class="cell-amber"/>
+    <text x="1557" y="462" class="muted" text-anchor="middle">L2</text>
+  </g>
+
+  <g>
+    <rect x="94" y="500" width="1588" height="120" rx="14" class="row-box"/>
+    <text x="128" y="540" class="row-header">PRD drafting</text>
+    <text x="128" y="568" class="row-header">Architecture &amp; design reviews</text>
+    <circle cx="1640" cy="545" r="22" class="p1"/>
+    <text x="1640" y="551" class="badge" text-anchor="middle">P1</text>
+    <rect x="418" y="514" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="478" y="547" class="muted" text-anchor="middle">—</text>
+    <rect x="542" y="514" width="120" height="52" rx="10" class="cell-amber"/>
+    <text x="602" y="547" class="muted" text-anchor="middle">2</text>
+    <rect x="666" y="514" width="120" height="52" rx="10" class="cell-green"/>
+    <text x="726" y="547" class="muted" text-anchor="middle">3</text>
+    <rect x="790" y="514" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="850" y="547" class="muted" text-anchor="middle">—</text>
+    <rect x="914" y="514" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="974" y="547" class="muted" text-anchor="middle">—</text>
+    <rect x="1432" y="514" width="250" height="52" rx="12" class="cell-amber"/>
+    <text x="1557" y="547" class="muted" text-anchor="middle">L2</text>
+  </g>
+
+  <g>
+    <rect x="94" y="634" width="1588" height="74" rx="14" class="stage-pill"/>
+    <text x="128" y="679" class="stage-header">Build &amp; Validate</text>
+    <rect x="1432" y="644" width="250" height="52" rx="12" class="cell-amber"/>
+    <text x="1557" y="676" class="muted" text-anchor="middle">L2</text>
+  </g>
+
+  <g>
+    <rect x="94" y="714" width="1588" height="120" rx="14" class="row-box"/>
+    <text x="128" y="753" class="row-header">AI-assisted coding</text>
+    <text x="128" y="782" class="row-header">Test creation &amp; automation</text>
+    <text x="128" y="811" class="row-header">Release readiness checks</text>
+    <circle cx="1640" cy="768" r="22" class="p0"/>
+    <text x="1640" y="774" class="badge" text-anchor="middle">P0</text>
+    <rect x="418" y="728" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="478" y="761" class="muted" text-anchor="middle">—</text>
+    <rect x="542" y="728" width="120" height="52" rx="10" class="cell-amber"/>
+    <text x="602" y="761" class="muted" text-anchor="middle">2</text>
+    <rect x="666" y="728" width="120" height="52" rx="10" class="cell-green"/>
+    <text x="726" y="761" class="muted" text-anchor="middle">3</text>
+    <rect x="790" y="728" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="850" y="761" class="muted" text-anchor="middle">—</text>
+    <rect x="914" y="728" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="974" y="761" class="muted" text-anchor="middle">—</text>
+    <rect x="1432" y="728" width="250" height="52" rx="12" class="cell-amber"/>
+    <text x="1557" y="761" class="muted" text-anchor="middle">L2</text>
+  </g>
+
+  <g>
+    <rect x="94" y="848" width="1588" height="74" rx="14" class="stage-pill"/>
+    <text x="128" y="893" class="stage-header">Release &amp; Customer Adoption</text>
+    <rect x="1432" y="858" width="250" height="52" rx="12" class="cell-green"/>
+    <text x="1557" y="890" class="muted" text-anchor="middle">L3</text>
+  </g>
+
+  <g>
+    <rect x="94" y="928" width="1588" height="120" rx="14" class="row-box"/>
+    <text x="128" y="968" class="row-header">Customer onboarding &amp; configuration</text>
+    <text x="128" y="997" class="row-header">Release planning &amp; coordination</text>
+    <circle cx="1640" cy="968" r="22" class="p1"/>
+    <text x="1640" y="974" class="badge" text-anchor="middle">P1</text>
+    <rect x="418" y="942" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="478" y="975" class="muted" text-anchor="middle">—</text>
+    <rect x="542" y="942" width="120" height="52" rx="10" class="cell-amber"/>
+    <text x="602" y="975" class="muted" text-anchor="middle">2</text>
+    <rect x="666" y="942" width="120" height="52" rx="10" class="cell-green"/>
+    <text x="726" y="975" class="muted" text-anchor="middle">3</text>
+    <rect x="790" y="942" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="850" y="975" class="muted" text-anchor="middle">—</text>
+    <rect x="914" y="942" width="120" height="52" rx="10" class="cell-gray"/>
+    <text x="974" y="975" class="muted" text-anchor="middle">—</text>
+    <rect x="1432" y="942" width="250" height="52" rx="12" class="cell-green"/>
+    <text x="1557" y="975" class="muted" text-anchor="middle">L3</text>
   </g>
 </svg>
