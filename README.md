@@ -30,9 +30,21 @@ It helps leaders:
 
 ## What it measures
 
-The tracker focuses on outcome-based metrics, not tool adoption alone.
+At its core, this tracker measures AI-PDLC capability maturity and investment priority. It is not a direct operational KPI dashboard yet. Instead, it creates the foundation for leaders to understand where the organization is weak, where the highest-value opportunities are, and what should be centralized, hybrid, or team-specific.
+
+The reason this matters is simple: as critical capabilities move up the maturity scale, the expected business outcomes should improve. The metrics below are the downstream effect of capability maturity, not the beginning of the system.
+
+### What the tracker measures today
+
+- maturity by stage and capability
+- capability coverage and ownership across teams and domains
+- priority distribution across P0/P1/P2
+- status movement from not started to piloting to scaled adoption
+- org-wide, hybrid, and team-specific capability placement
 
 ### North-star outcomes
+
+These are the outcomes leaders expect to see as capability maturity improves.
 
 - cycle time reduction
 - quality improvement and reduced rework
@@ -43,12 +55,16 @@ The tracker focuses on outcome-based metrics, not tool adoption alone.
 
 ### Leading indicators
 
+These are the early signals that capability progression is creating value.
+
 - maturity movement by stage and capability
 - pilot-to-scale conversion rate
 - capability coverage and ownership
 - priority distribution across P0/P1/P2
 
 ### Lagging indicators
+
+These are the business results that should show up after the capability model has matured.
 
 - before/after improvement on key workflows
 - reduction in manual effort and defects

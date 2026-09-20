@@ -18,6 +18,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 - **Capability library**: the editable catalog of capabilities grouped by PDLC stage; allows org-default capabilities and team-custom capabilities to coexist, so there is a shared baseline and room for local variation.
 - **Scope selector**: a top-level filter for Org / Domain / Team / View so leaders can look at the org roll-up, a team slice, or a specific domain without mixing data together.
 - **AI Opportunity Canvas**: the structured narrative for any capability: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
+- **Status**: the execution state for a capability. Recommended values are Not assessed / Not started / Piloting / Scaled / Deprioritized / N/A. The default for any unevaluated capability is Not assessed, not Not started.
 - **Outcome metrics**: the actual leading and lagging measures that determine whether a capability is improving real work outcomes (cycle time, quality, customer experience, resilience, throughput, and capacity), not just whether AI usage is increasing.
 - **Playbook**: the full transformation method behind the tracker — not only a maturity model. It should clearly guide a leader from mapping the PDLC to prioritizing, standardizing, automating, and measuring end-to-end outcomes.
 
@@ -67,14 +68,25 @@ Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org
 | `placementOverrideReason` | text (optional) | why the org deviates from the default/computed setting |
 | `included` | boolean | whether the capability is in scope for the selected org/team |
 | `selectionTier` | enum | Must have / Should have / Optional |
-| `status` | enum | Not started / Piloting / Scaled / Deprioritized |
+| `status` | enum | Not assessed / Not started / Piloting / Scaled / Deprioritized / N/A. Default = Not assessed until the leader has reviewed the capability. |
 | `aiOpportunityNotes` | text | what AI would actually do here |
 | `baseline` | text | e.g. "6 hrs/week manual" |
 | `result` | text | e.g. "2.5 hrs/week, 58% faster" — populated once piloted |
 | `updatedAt` | datetime | |
 | `updatedBy` | text | who logged it |
 
-Purpose: this is where investment decisions and prioritization happen — but only for the stages a leader's pulse flagged as worth the deeper look. This is the "too much" ceiling to avoid triggering everywhere.
+Purpose: this is where investment decisions and prioritization happen — but only for the stages a leader's pulse flagged as worth the deeper look. This is the "too much" ceiling to avoid triggering everywhere. The default status must be Not assessed, so leaders can distinguish between a capability they haven't reviewed yet and a capability they reviewed and deliberately left as not started.
+
+### Status semantics
+
+The system should clearly separate the following meanings:
+
+- **Not assessed**: default value before a leader has reviewed the capability
+- **Not started**: reviewed and relevant, but no execution has begun yet
+- **N/A**: capability is not relevant for this org, domain, or team
+- **Piloting / Scaled / Deprioritized**: execution states after the capability has been reviewed and included
+
+This avoids conflating a data gap with an intentional operating decision.
 
 ---
 
@@ -279,7 +291,81 @@ To keep the tool practical and reusable, the spreadsheet/app should be organized
 
 This keeps the executive view light while allowing deeper operational analysis without overloading leaders with low-level detail.
 
-## 5. Implementation notes
+## 5. Future roadmap / Phase 2: outcome metrics layer
+
+This is the next evolution of the tracker, and it should be treated as a planned enhancement rather than part of the immediate MVP. The core tracker should stay focused on capability maturity, placement, and prioritization. Once that is stable, the next phase adds a structured outcome metrics layer to prove that maturity improvements are producing business value.
+
+### 5.1 Phase 2 goal
+
+Add a repeatable way to connect capability maturity to measurable business outcomes. The outcome layer is not a replacement for the capability model; it is the evidence layer that tells leaders whether the capability roadmap is translating into real value.
+
+### 5.2 Proposed Phase 2 capabilities
+
+- attach a metric definition to each capability or initiative
+- capture baseline and result values for selected workflows
+- associate each metric with a business outcome category such as cycle time, quality, customer experience, reliability, or capacity
+- allow a leader to specify whether the metric is leading, lagging, or operational proof
+- compare before/after values across a chosen time window
+- show which initiatives are delivering measurable gains and which remain in pilot mode without evidence
+
+### 5.3 Example Phase 2 metric categories
+
+#### Business outcomes
+- cycle time reduction
+- defect reduction and rework reduction
+- customer issue resolution speed
+- incident MTTR reduction
+- throughput / productivity gains
+- capacity released for higher-value work
+
+#### Leading indicators
+- capability maturity movement
+- pilot-to-scale conversion rate
+- capability coverage and ownership
+- investment prioritization movement across P0/P1/P2
+
+#### Lagging indicators
+- before/after improvement on key workflows
+- reduction in manual effort and defects
+- faster release and support cycles
+- measurable gains in customer and operational outcomes
+
+### 5.4 Proposed data model additions for Phase 2
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `metricName` | text | e.g. "Average ticket resolution time" |
+| `metricType` | enum | Leading / Lagging / Outcome |
+| `baselineValue` | number | the starting measurement |
+| `resultValue` | number | the post-change measurement |
+| `unit` | text | e.g. hours, %, count |
+| `measurementPeriod` | text | e.g. 30-day, quarterly |
+| `source` | text | where the data comes from |
+| `owner` | text | person or team accountable |
+| `isTracked` | boolean | whether this item is currently measured |
+| `impactCategory` | enum | Quality / Speed / CX / Reliability / Capacity |
+
+### 5.5 Suggested Phase 2 UI features
+
+- a dedicated Metrics tab or Outcomes dashboard
+- before/after cards for each capability or initiative
+- trend lines for selected metrics over time
+- a proof-of-value section showing which investments created measurable gains
+- a filter for org, domain, team, and impact category
+- a clear distinction between maturity score and outcome evidence
+
+### 5.6 Scope boundary for MVP
+
+The initial tracker should remain focused on:
+
+- maturity assessment
+- capability prioritization
+- placement logic
+- org/team operating model clarity
+
+The metrics layer should be explicitly marked as a future enhancement, not presented as a current direct tracking mechanism. In other words, the tracker can say: capability maturity is the input model; outcome metrics are the evidence model that should improve as the maturity model advances.
+
+## 6. Implementation notes
 
 - Keep scoring anchors and the priority formula exactly as written (section 3.2–3.3) so results are comparable across every leader — don't let the tool's builder invent its own scale.
 - Persistence is up to your environment: a shared backend/sheet if multiple leaders need to see each other's live entries (recommended, since the whole point is one roll-up), or per-leader files merged manually if no shared store is available.
