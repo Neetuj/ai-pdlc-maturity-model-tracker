@@ -110,11 +110,11 @@ The examples below show how the tracker looks in practice at the org level, stag
 
 This is the first view a leader sees. It combines the org-wide summary cards with the PDLC heatmap and scope filters, giving a single operating view across all stages before anyone drills into a particular capability.
 
-### 2. Stage-by-stage maturity view
+### 2. Capability maturity heat map
 
-![PDLC heatmap](./images/case-study/02-stage-heatmap.svg)
+![Capability maturity heat map](./images/case-study/02-stage-heatmap.svg)
 
-The heatmap reveals where the org has active maturity, where it is still neutral or under-assessed, and where the biggest investment opportunities likely sit. It is strongest when it shows both the stage aggregate and the top capability gaps inside that stage, ranked by urgency, so leaders do not need to read raw rows to understand what is most important to fix. The stage highlight is an executive summary of the underlying capability average; the capability rows beneath it are the operational evidence.
+This view shows the capability maturity heat map, not a stage-only scorecard. Each stage is grouped as a section, with a single highlighted aggregate maturity signal at the stage level and the underlying capability rows underneath it. That makes the executive summary visible without hiding the detailed operating evidence: leaders can see the stage average and the specific capabilities that created it, while unassessed capabilities stay gray and without a priority badge.
 
 ### 3. Priority input editor
 

@@ -1,116 +1,88 @@
-<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+<svg width="1400" height="960" viewBox="0 0 1400 960" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Capability maturity heat map">
   <defs>
     <style>
-      .label { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; fill: #596980; }
-      .title { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 800; fill: #152233; }
-      .stage { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; fill: #152233; }
-      .status { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; fill: #152233; }
-      .pill { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; fill: #ffffff; }
+      .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 13px 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .stage-label { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .cap-label { font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .status-label { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .muted { font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .panel { fill: #ffffff; stroke: #dfe7f2; stroke-width: 1; }
+      .stage-bar { fill: #edf5ff; stroke: #bfd4ff; stroke-width: 1; }
+      .row-box { fill: #f8fafc; stroke: #e3e8f0; stroke-width: 1; }
+      .green { fill: #dff7e8; }
+      .amber { fill: #fff2ce; }
+      .blue { fill: #dfeafe; }
+      .purple { fill: #ece7ff; }
+      .gray { fill: #edf2f7; }
+      .badge { fill: #e2e8f0; }
+      .badge-text { font: 700 11px 'Segoe UI', Arial, sans-serif; fill: #334155; }
     </style>
   </defs>
 
-  <rect width="1400" height="900" fill="#f5f8fc"/>
-  <rect x="90" y="60" width="1220" height="780" rx="28" fill="#ffffff" stroke="#dfe7f1"/>
+  <rect width="1400" height="960" fill="#f5f7fb"/>
+  <rect x="70" y="42" width="1260" height="860" rx="22" class="panel"/>
 
-  <text x="130" y="112" class="title" font-size="30">PDLC heatmap — Michael Scott org roll-up</text>
-  <text x="130" y="145" class="label" font-size="14">Same capability aggregated once at the root level, with a single view across Pam, Jim, Dwight, and Angela</text>
+  <text x="110" y="92" class="title">Capability maturity heat map</text>
+  <text x="110" y="118" class="subtitle">Org roll-up: stage summary plus the capability rows that generate the stage score</text>
 
-  <rect x="130" y="170" width="1120" height="600" rx="20" fill="#f9fbff" stroke="#dfe7f1"/>
-
-  <g>
-    <text x="170" y="220" class="label" font-size="14">Stage</text>
-    <text x="500" y="220" class="label" font-size="14">L1</text>
-    <text x="610" y="220" class="label" font-size="14">L2</text>
-    <text x="720" y="220" class="label" font-size="14">L3</text>
-    <text x="830" y="220" class="label" font-size="14">L4</text>
-    <text x="940" y="220" class="label" font-size="14">L5</text>
-    <text x="1030" y="220" class="label" font-size="14">Root view</text>
+  <g transform="translate(110,150)">
+    <rect x="0" y="0" width="1180" height="62" rx="12" class="stage-bar"/>
+    <text x="24" y="38" class="stage-label">Discover &amp; Plan</text>
+    <rect x="980" y="14" width="170" height="34" rx="17" class="green"/>
+    <text x="1056" y="36" class="status-label">L3 stage average</text>
   </g>
 
-  <g>
-    <text x="170" y="285" class="stage" font-size="18">Discover &amp; Plan</text>
-    <text x="170" y="350" class="stage" font-size="18">Define &amp; Design</text>
-    <text x="170" y="415" class="stage" font-size="18">Build &amp; Validate</text>
-    <text x="170" y="480" class="stage" font-size="18">Release &amp; Customer Adoption</text>
-    <text x="170" y="545" class="stage" font-size="18">Operate, Support &amp; Resilience</text>
-    <text x="170" y="610" class="stage" font-size="18">Learn &amp; Optimize</text>
-    <text x="170" y="675" class="stage" font-size="18">Lead &amp; Run the Org</text>
+  <g transform="translate(110,222)">
+    <rect x="0" y="0" width="1180" height="92" rx="12" class="row-box"/>
+    <text x="24" y="30" class="cap-label">Market &amp; customer research</text>
+    <text x="24" y="54" class="cap-label">Roadmap prioritization</text>
+    <rect x="980" y="30" width="170" height="28" rx="14" class="green"/>
+    <text x="1056" y="49" class="status-label">L3</text>
+    <rect x="1150" y="30" width="20" height="20" rx="10" class="badge"/>
+    <text x="1157" y="45" class="badge-text">P1</text>
   </g>
 
-  <g>
-    <rect x="470" y="255" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="255" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="255" width="90" height="40" rx="8" fill="#dff1ec"/><rect x="800" y="255" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="255" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="320" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="320" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="320" width="90" height="40" rx="8" fill="#dff1ec"/><rect x="800" y="320" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="320" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="385" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="385" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="385" width="90" height="40" rx="8" fill="#dff1ec"/><rect x="800" y="385" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="385" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="450" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="450" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="450" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="800" y="450" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="450" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="515" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="515" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="515" width="90" height="40" rx="8" fill="#dff1ec"/><rect x="800" y="515" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="515" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="580" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="580" width="90" height="40" rx="8" fill="#f8e7b4"/><rect x="690" y="580" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="800" y="580" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="580" width="90" height="40" rx="8" fill="#eef2f6"/>
-    <rect x="470" y="645" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="580" y="645" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="690" y="645" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="800" y="645" width="90" height="40" rx="8" fill="#eef2f6"/><rect x="910" y="645" width="90" height="40" rx="8" fill="#eef2f6"/>
+  <g transform="translate(110,326)">
+    <rect x="0" y="0" width="1180" height="62" rx="12" class="stage-bar"/>
+    <text x="24" y="38" class="stage-label">Build &amp; Validate</text>
+    <rect x="980" y="14" width="170" height="34" rx="17" class="amber"/>
+    <text x="1056" y="36" class="status-label">L2 stage average</text>
   </g>
 
-  <g class="status">
-    <rect x="1030" y="255" width="170" height="40" rx="10" fill="#dfeaf8"/>
-    <text x="1058" y="281" class="pill" font-size="13">Customer research</text>
-
-    <rect x="1030" y="320" width="170" height="40" rx="10" fill="#dfeaf8"/>
-    <text x="1058" y="346" class="pill" font-size="13">PRD + architecture</text>
-
-    <rect x="1030" y="385" width="170" height="40" rx="10" fill="#d4ecff"/>
-    <text x="1058" y="411" class="pill" font-size="13">AI coding + tests</text>
-
-    <rect x="1030" y="450" width="170" height="40" rx="10" fill="#eaf2f8"/>
-    <text x="1058" y="476" class="pill" font-size="13">Onboarding + enablement</text>
-
-    <rect x="1030" y="515" width="170" height="40" rx="10" fill="#d4ecff"/>
-    <text x="1058" y="541" class="pill" font-size="13">Incident + SLA tracking</text>
-
-    <rect x="1030" y="580" width="170" height="40" rx="10" fill="#eaf2f8"/>
-    <text x="1058" y="606" class="pill" font-size="13">Feedback + analytics</text>
-
-    <rect x="1030" y="645" width="170" height="40" rx="10" fill="#eaf2f8"/>
-    <text x="1058" y="671" class="pill" font-size="13">Governance + planning</text>
+  <g transform="translate(110,398)">
+    <rect x="0" y="0" width="1180" height="120" rx="12" class="row-box"/>
+    <text x="24" y="30" class="cap-label">AI-assisted coding</text>
+    <text x="24" y="54" class="cap-label">Test creation &amp; automation</text>
+    <text x="24" y="78" class="cap-label">Security reviews</text>
+    <rect x="980" y="46" width="170" height="28" rx="14" class="amber"/>
+    <text x="1056" y="65" class="status-label">L2</text>
+    <rect x="1150" y="46" width="20" height="20" rx="10" class="badge"/>
+    <text x="1157" y="61" class="badge-text">P0</text>
   </g>
 
-  <g font-family="Segoe UI, Arial, sans-serif" font-weight="700" fill="#152233">
-    <text x="520" y="282" font-size="16">—</text>
-    <text x="630" y="282" font-size="16">2</text>
-    <text x="740" y="282" font-size="16">3</text>
-    <text x="850" y="282" font-size="16">—</text>
-    <text x="960" y="282" font-size="16">—</text>
+  <g transform="translate(110,530)">
+    <rect x="0" y="0" width="1180" height="62" rx="12" class="stage-bar"/>
+    <text x="24" y="38" class="stage-label">Operate, Support &amp; Resilience</text>
+    <rect x="980" y="14" width="170" height="34" rx="17" class="blue"/>
+    <text x="1056" y="36" class="status-label">L3 stage average</text>
+  </g>
 
-    <text x="520" y="347" font-size="16">—</text>
-    <text x="630" y="347" font-size="16">2</text>
-    <text x="740" y="347" font-size="16">3</text>
-    <text x="850" y="347" font-size="16">—</text>
-    <text x="960" y="347" font-size="16">—</text>
+  <g transform="translate(110,602)">
+    <rect x="0" y="0" width="1180" height="120" rx="12" class="row-box"/>
+    <text x="24" y="30" class="cap-label">Support ticket triage</text>
+    <text x="24" y="54" class="cap-label">Incident detection &amp; management</text>
+    <text x="24" y="78" class="cap-label">SLA / SLO tracking</text>
+    <rect x="980" y="46" width="170" height="28" rx="14" class="blue"/>
+    <text x="1056" y="65" class="status-label">L3</text>
+    <rect x="1150" y="46" width="20" height="20" rx="10" class="badge"/>
+    <text x="1157" y="61" class="badge-text">P0</text>
+  </g>
 
-    <text x="520" y="412" font-size="16">—</text>
-    <text x="630" y="412" font-size="16">2</text>
-    <text x="740" y="412" font-size="16">3</text>
-    <text x="850" y="412" font-size="16">—</text>
-    <text x="960" y="412" font-size="16">—</text>
-
-    <text x="520" y="477" font-size="16">—</text>
-    <text x="630" y="477" font-size="16">2</text>
-    <text x="740" y="477" font-size="16">—</text>
-    <text x="850" y="477" font-size="16">—</text>
-    <text x="960" y="477" font-size="16">—</text>
-
-    <text x="520" y="542" font-size="16">—</text>
-    <text x="630" y="542" font-size="16">2</text>
-    <text x="740" y="542" font-size="16">3</text>
-    <text x="850" y="542" font-size="16">—</text>
-    <text x="960" y="542" font-size="16">—</text>
-
-    <text x="520" y="607" font-size="16">—</text>
-    <text x="630" y="607" font-size="16">2</text>
-    <text x="740" y="607" font-size="16">—</text>
-    <text x="850" y="607" font-size="16">—</text>
-    <text x="960" y="607" font-size="16">—</text>
-
-    <text x="520" y="672" font-size="16">—</text>
-    <text x="630" y="672" font-size="16">—</text>
-    <text x="740" y="672" font-size="16">—</text>
-    <text x="850" y="672" font-size="16">—</text>
-    <text x="960" y="672" font-size="16">—</text>
+  <g transform="translate(110,734)">
+    <rect x="0" y="0" width="1180" height="62" rx="12" class="stage-bar"/>
+    <text x="24" y="38" class="stage-label">Lead &amp; Run the Org</text>
+    <rect x="980" y="14" width="170" height="34" rx="17" class="gray"/>
+    <text x="1036" y="36" class="status-label">Not assessed</text>
   </g>
 </svg>
