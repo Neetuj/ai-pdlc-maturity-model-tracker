@@ -15,6 +15,8 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 - **Maturity level**: L1–L5, used identically at both tiers (section 3.1).
 - **Placement**: Central / Team-Specific / Hybrid, either taken from a capability's library default or computed from four yes/no answers (section 3.4), with a leader-level override always available.
 - **Placement override**: a manual override that can change a capability from its default/computed value to Central, Hybrid, or Team-Specific at the Org/Domain level, while still preserving the underlying default and the final effective model.
+- **Capability library**: the editable catalog of capabilities grouped by PDLC stage; allows org-default capabilities and team-custom capabilities to coexist, so there is a shared baseline and room for local variation.
+- **Scope selector**: a top-level filter for Org / Domain / Team / View so leaders can look at the org roll-up, a team slice, or a specific domain without mixing data together.
 - **AI Opportunity Canvas**: the structured narrative for any capability: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
 - **Playbook**: the full transformation method behind the tracker — not only a maturity model. It should clearly guide a leader from mapping the PDLC to prioritizing, standardizing, automating, and measuring end-to-end outcomes.
 
@@ -41,6 +43,10 @@ Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org
 
 | Field | Type | Notes |
 | --- | --- | --- |
+| `org` | text | owning org or business unit |
+| `domain` | text | leader domain, e.g. Platform, Payments, Operations |
+| `team` | text | team or function submitting the data |
+| `scope` | enum | Org default / Team custom / Hybrid |
 | `orgDomain` | text | free text |
 | `stage` | enum | one of the 7 stages (3.5) |
 | `capabilityName` | text | from the library (3.5) or custom |
@@ -58,8 +64,10 @@ Purpose: produces the org-wide heatmap (maturity gap × pain, per stage, per Org
 | `placementEffective` | enum | final model used for reporting and scoring. Derived as `placementOverride` if set, otherwise `placementComputed` or `placementDefault` |
 | `placementComputed` | enum (optional) | value created from the four yes/no questions (3.4) |
 | `placementOverrideReason` | text (optional) | why the org deviates from the default/computed setting |
-| `aiOpportunityNotes` | text | what AI would actually do here |
+| `included` | boolean | whether the capability is in scope for the selected org/team |
+| `selectionTier` | enum | Must have / Should have / Optional |
 | `status` | enum | Not started / Piloting / Scaled / Deprioritized |
+| `aiOpportunityNotes` | text | what AI would actually do here |
 | `baseline` | text | e.g. "6 hrs/week manual" |
 | `result` | text | e.g. "2.5 hrs/week, 58% faster" — populated once piloted |
 | `updatedAt` | datetime | |
@@ -144,6 +152,8 @@ This preserves the default library model as the baseline, while allowing a leade
 ### 3.5 Capability library — 7 stages, with default placement
 
 Organized by **stage**, not by profession, since one leader owns all of these across their domain.
+
+The library is intentionally editable and stage-based: leaders can add or remove capabilities, rename them, and distinguish between org-default and team-custom entries. This prevents the catalog from becoming a rigid list while still preserving a common baseline across the org.
 
 **1. Discover & Plan**
 | Capability | Default placement |

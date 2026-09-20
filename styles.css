@@ -92,6 +92,13 @@ button {
   font-weight: 700;
 }
 
+.inline-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .secondary-btn {
   background: var(--primary-soft);
   color: var(--primary);
@@ -138,6 +145,20 @@ button {
   margin-bottom: 16px;
 }
 
+.scope-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.scope-summary {
+  margin: -4px 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .formula-banner {
   background: var(--primary-soft);
   color: var(--primary);
@@ -154,6 +175,89 @@ button {
   font-size: 12px;
   line-height: 1.4;
 }
+
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.central { background: var(--success); }
+.dot.hybrid { background: var(--warning); }
+.dot.team { background: var(--danger); }
+.dot.muted-dot { background: #a9b5c3; }
+
+.heatmap-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.panel-title-row h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: 170px repeat(5, minmax(70px, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.heatmap-header,
+.heatmap-stage,
+.heatmap-cell {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #f9fbff;
+  text-align: center;
+  font-size: 12px;
+}
+
+.heatmap-header {
+  font-weight: 700;
+  color: var(--muted);
+  background: #eef4ff;
+}
+
+.heatmap-stage {
+  text-align: left;
+  background: #f8faff;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.heatmap-cell {
+  background: #edf4ff;
+  color: var(--ink);
+}
+
+.heatmap-cell.level-1 { background: #f8d7d7; }
+.heatmap-cell.level-2 { background: #fef1cd; }
+.heatmap-cell.level-3 { background: #fef7d2; }
+.heatmap-cell.level-4 { background: #dff6e8; }
+.heatmap-cell.level-5 { background: #cfead7; }
 
 .editor-modal {
   position: fixed;

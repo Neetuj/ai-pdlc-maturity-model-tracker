@@ -18,6 +18,7 @@
             <span>Org/Domain</span>
             <input id="orgDomain" type="text" value="X Team" />
           </label>
+          <a class="secondary-btn inline-link" href="capability-library.html">Capability library</a>
           <button id="resetDataBtn" class="secondary-btn">Reset demo data</button>
         </div>
       </header>
@@ -25,13 +26,38 @@
       <main>
         <section class="summary-grid" id="summaryGrid"></section>
 
-        <section class="toolbar">
+        <section class="toolbar scope-toolbar">
+          <label class="field-inline">
+            <span>Org</span>
+            <select id="orgScopeSelect"></select>
+          </label>
+          <label class="field-inline">
+            <span>Domain</span>
+            <select id="domainScopeSelect"></select>
+          </label>
+          <label class="field-inline">
+            <span>Team</span>
+            <select id="teamScopeSelect"></select>
+          </label>
+          <label class="field-inline">
+            <span>View</span>
+            <select id="viewScopeSelect"></select>
+          </label>
           <label class="field-inline">
             <span>Stage filter</span>
             <select id="stageFilter">
               <option value="All">All stages</option>
             </select>
           </label>
+        </section>
+
+        <div id="scopeSummary" class="scope-summary muted"></div>
+
+        <section class="legend-row">
+          <span class="legend-item"><i class="dot central"></i> Central</span>
+          <span class="legend-item"><i class="dot hybrid"></i> Hybrid</span>
+          <span class="legend-item"><i class="dot team"></i> Team-specific</span>
+          <span class="legend-item"><i class="dot muted-dot"></i> N/A / not in scope</span>
         </section>
 
         <section class="formula-banner">
@@ -52,6 +78,13 @@
           </div>
         </section>
 
+        <section class="heatmap-panel">
+          <div class="panel-title-row">
+            <h2>PDLC heatmap</h2>
+          </div>
+          <div id="heatmapGrid" class="heatmap-grid"></div>
+        </section>
+
         <section class="table-panel">
           <table>
             <thead>
@@ -64,6 +97,8 @@
                 <th>Current</th>
                 <th>Target</th>
                 <th>Gap</th>
+                <th>Included</th>
+                <th>Need</th>
                 <th>Priority</th>
                 <th>Inputs</th>
                 <th>Status</th>

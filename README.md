@@ -14,9 +14,13 @@ A common, evidence-based maturity model that any leader can use to score their o
 
 Give leaders a fast way to self-assess AI maturity across every stage of the product development lifecycle, and a structured way to prioritize where AI investment will have the most impact — without requiring a full-time analyst to build the case.
 
+The current prototype also supports a richer operating model: the org defines a shared capability baseline, teams can extend it with team-specific capabilities, and leadership can filter the tracker by org, domain, team, and view to see the right slice of data at the right level.
+
 ## Who it's for
 
 Leaders who own a full remit — engineering, product, delivery, CX, incidents, resilience, their own org — scoring their whole domain, not split by profession. One leader, one Org/Domain, covering all 7 PDLC stages.
+
+This includes leaders operating across multiple teams who need both a common org baseline and a local team-specific view without losing comparability.
 
 ## What it solves
 
@@ -32,9 +36,21 @@ Two tiers, both scored on the same L1–L5 maturity scale:
 1. **Stage Pulse** — every leader does this for all 7 PDLC stages: current maturity, target maturity, and a pain/opportunity rating. Low effort, produces an org-wide heatmap.
 2. **Capability deep-dive** — optional, for the 2–3 stages a leader's pulse flagged as worth a closer look. Six-axis scoring (time spent, frequency, AI potential, scalability, risk, feasibility) feeds a priority formula that ranks capabilities into P0/P1/P2 investment tiers, plus a placement recommendation (Central/Team-Specific/Hybrid).
 
+The current implementation adds a third practical layer: a configurable capability library that is editable by leaders and can include both org-default and team-custom capabilities. The tracker can be filtered by org, domain, team, and view so leaders can see the org roll-up or a specific team slice without mixing the records together.
+
 The full data model, scoring anchors, priority formula, and capability library are in [`docs/build-spec.md`](docs/build-spec.md) — that file is the technical source of truth; keep the scoring anchors and formula there unchanged so results stay comparable across every leader and every tool that implements this model.
 
 The centerpiece view is a maturity/focus heatmap: PDLC stages across one axis, L1–L5 maturity across the other, with capabilities placed inside each stage and an overlay showing where productivity impact is highest — so a leader can see, for example, that they're L2 in customer onboarding and L1 in incident RCA, but incident RCA is consuming far more capacity, making it the bigger opportunity. The detailed tracker (spreadsheet or app) is the drill-down behind that visual, not a separate product.
+
+## Current prototype features
+
+- org / domain / team / view selectors for scope-aware analysis
+- editable capability library grouped by lifecycle stage
+- add and delete capability actions using a simple stage-card visual model
+- org-default capabilities alongside team-custom capabilities
+- included / N/A decisioning and must-have / should-have / optional need tier
+- explicit status setting with the default starting at Not started
+- a dedicated reference page at [`capability-library.html`](capability-library.html)
 
 ## Metrics
 

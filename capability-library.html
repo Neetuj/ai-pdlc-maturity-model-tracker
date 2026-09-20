@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-PDLC Capability Library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #eef4ff 0%, #f4f7fb 120px);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #152233;
+      }
+
+      .library-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      .library-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .page-title {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 2.6rem);
+      }
+
+      .library-section {
+        background: #ffffff;
+        border: 1px solid #dfe7f1;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(21, 34, 51, 0.06);
+        padding: 18px;
+        margin-bottom: 18px;
+      }
+
+      .library-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 14px;
+      }
+
+      .library-card {
+        border: 1px solid #dfe7f1;
+        border-radius: 14px;
+        padding: 14px;
+        background: #f9fbff;
+      }
+
+      .library-card h3 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+      }
+
+      .library-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid #dfe7f1;
+        border-radius: 10px;
+        padding: 8px 10px;
+        margin-bottom: 8px;
+      }
+
+      .library-item input,
+      .library-item select,
+      .add-form input,
+      .add-form select,
+      .add-form button {
+        min-height: 34px;
+        border-radius: 8px;
+        border: 1px solid #dfe7f1;
+        font: inherit;
+      }
+
+      .library-item input,
+      .add-form input {
+        flex: 1;
+        width: 100%;
+        padding: 7px 10px;
+      }
+
+      .library-item select,
+      .add-form select {
+        padding: 7px 8px;
+        background: #fff;
+      }
+
+      .source-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 6px 8px;
+        border-radius: 999px;
+        background: #edf3ff;
+        color: #2556d9;
+      }
+
+      .source-pill.team {
+        background: #fff1e6;
+        color: #a85900;
+      }
+
+      .delete-btn,
+      .add-btn {
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .delete-btn {
+        background: #fdecec;
+        color: #a12323;
+      }
+
+      .add-btn {
+        background: #eafaf2;
+        color: #1f8a5d;
+      }
+
+      .add-form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .inline-link,
+      .secondary-btn,
+      .reset-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 10px;
+        min-height: 38px;
+        padding: 9px 14px;
+        cursor: pointer;
+      }
+
+      .secondary-btn,
+      .reset-btn {
+        background: #eaf0ff;
+        color: #2556d9;
+        border: none;
+      }
+
+      .muted {
+        color: #596980;
+      }
+
+      @media (max-width: 700px) {
+        .library-item,
+        .add-form {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .delete-btn,
+        .add-btn {
+          width: 100%;
+          border-radius: 10px;
+          height: 34px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="library-shell">
+      <div class="library-topbar">
+        <div>
+          <p class="eyebrow">AI-Native PDLC Playbook</p>
+          <h1 class="page-title">Capability Library</h1>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <a class="secondary-btn inline-link" href="index.html">Back to tracker</a>
+          <button class="reset-btn" id="resetLibraryBtn" type="button">Reset defaults</button>
+        </div>
+      </div>
+
+      <section class="library-section">
+        <h2>Org / team capability model</h2>
+        <p class="muted">
+          The shared library is editable by leaders. Org-default capabilities come first, and team-level capabilities can be added and tracked separately.
+          You can rename, delete, or add capabilities directly here; the tracker will reflect the current catalog.
+        </p>
+      </section>
+
+      <div id="libraryGrid" class="library-grid"></div>
+    </div>
+
+    <script>
+      const LIBRARY_KEY = 'ai-pdlc-capability-library-v1';
+      const STAGES = [
+        'Discover & Plan',
+        'Define & Design',
+        'Build & Validate',
+        'Release & Customer Adoption',
+        'Operate, Support & Resilience',
+        'Learn & Optimize',
+        'Lead & Run the Org'
+      ];
+
+      const defaultLibrary = [
+        { id: 'discover-1', stage: 'Discover & Plan', name: 'Customer research', source: 'Org default' },
+        { id: 'discover-2', stage: 'Discover & Plan', name: 'Roadmap prioritization', source: 'Org default' },
+        { id: 'discover-3', stage: 'Discover & Plan', name: 'Business case / ROI analysis', source: 'Team custom' },
+        { id: 'design-1', stage: 'Define & Design', name: 'PRD drafting', source: 'Org default' },
+        { id: 'design-2', stage: 'Define & Design', name: 'Architecture & design reviews', source: 'Org default' },
+        { id: 'design-3', stage: 'Define & Design', name: 'Dependency & cross-team risk mapping', source: 'Team custom' },
+        { id: 'build-1', stage: 'Build & Validate', name: 'AI-assisted coding', source: 'Org default' },
+        { id: 'build-2', stage: 'Build & Validate', name: 'Test creation & automation', source: 'Org default' },
+        { id: 'build-3', stage: 'Build & Validate', name: 'Release readiness checks', source: 'Team custom' },
+        { id: 'release-1', stage: 'Release & Customer Adoption', name: 'Customer onboarding & configuration', source: 'Org default' },
+        { id: 'release-2', stage: 'Release & Customer Adoption', name: 'Release planning & coordination', source: 'Org default' },
+        { id: 'release-3', stage: 'Release & Customer Adoption', name: 'Training & enablement', source: 'Team custom' },
+        { id: 'operate-1', stage: 'Operate, Support & Resilience', name: 'Incident detection & management', source: 'Org default' },
+        { id: 'operate-2', stage: 'Operate, Support & Resilience', name: 'Support ticket triage', source: 'Org default' },
+        { id: 'operate-3', stage: 'Operate, Support & Resilience', name: 'Capacity & performance engineering', source: 'Team custom' },
+        { id: 'learn-1', stage: 'Learn & Optimize', name: 'Product & usage analytics', source: 'Org default' },
+        { id: 'learn-2', stage: 'Learn & Optimize', name: 'Customer feedback synthesis', source: 'Org default' },
+        { id: 'lead-1', stage: 'Lead & Run the Org', name: 'Capacity & budget planning', source: 'Org default' },
+        { id: 'lead-2', stage: 'Lead & Run the Org', name: 'Executive / stakeholder reporting', source: 'Org default' },
+        { id: 'lead-3', stage: 'Lead & Run the Org', name: 'Vendor management', source: 'Team custom' }
+      ];
+
+      const libraryGrid = document.getElementById('libraryGrid');
+      const resetLibraryBtn = document.getElementById('resetLibraryBtn');
+
+      function loadLibrary() {
+        const saved = localStorage.getItem(LIBRARY_KEY);
+        if (!saved) {
+          localStorage.setItem(LIBRARY_KEY, JSON.stringify(defaultLibrary));
+          return structuredClone(defaultLibrary);
+        }
+
+        try {
+          const parsed = JSON.parse(saved);
+          if (!Array.isArray(parsed) || parsed.length === 0) {
+            return structuredClone(defaultLibrary);
+          }
+          return parsed;
+        } catch (error) {
+          console.warn('Unable to parse library state; resetting to defaults.');
+          localStorage.setItem(LIBRARY_KEY, JSON.stringify(defaultLibrary));
+          return structuredClone(defaultLibrary);
+        }
+      }
+
+      function saveLibrary(items) {
+        localStorage.setItem(LIBRARY_KEY, JSON.stringify(items));
+      }
+
+      function buildId() {
+        return `cap-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function renderLibrary() {
+        const items = loadLibrary();
+        libraryGrid.innerHTML = STAGES.map((stage) => {
+          const stageItems = items.filter((item) => item.stage === stage);
+
+          return `
+            <section class="library-card">
+              <h3>${stage}</h3>
+              ${stageItems.length ? stageItems.map((item) => `
+                <div class="library-item" data-id="${item.id}">
+                  <input class="capability-name" data-id="${item.id}" value="${escapeHtml(item.name)}" aria-label="${escapeHtml(stage)} capability name" />
+                  <select class="source-select" data-id="${item.id}" aria-label="Capability source">
+                    <option value="Org default" ${item.source === 'Org default' ? 'selected' : ''}>Org default</option>
+                    <option value="Team custom" ${item.source === 'Team custom' ? 'selected' : ''}>Team custom</option>
+                  </select>
+                  <button class="delete-btn" type="button" data-id="${item.id}" aria-label="Delete ${escapeHtml(item.name)}">×</button>
+                </div>
+              `).join('') : '<div class="muted">No capabilities yet.</div>'}
+
+              <div class="add-form">
+                <input class="new-name-input" data-stage="${escapeHtml(stage)}" placeholder="Add capability" />
+                <select class="new-source-select" data-stage="${escapeHtml(stage)}">
+                  <option value="Org default">Org default</option>
+                  <option value="Team custom">Team custom</option>
+                </select>
+                <button type="button" class="add-btn add-capability-btn" data-stage="${escapeHtml(stage)}" aria-label="Add capability to ${escapeHtml(stage)}">+</button>
+              </div>
+            </section>
+          `;
+        }).join('');
+      }
+
+      document.addEventListener('input', (event) => {
+        const target = event.target;
+        if (!target.classList.contains('capability-name')) return;
+
+        const items = loadLibrary();
+        const item = items.find((entry) => entry.id === target.dataset.id);
+        if (!item) return;
+
+        item.name = target.value.trim() || 'Untitled capability';
+        saveLibrary(items);
+      });
+
+      document.addEventListener('change', (event) => {
+        const target = event.target;
+        if (target.classList.contains('source-select')) {
+          const items = loadLibrary();
+          const item = items.find((entry) => entry.id === target.dataset.id);
+          if (!item) return;
+
+          item.source = target.value;
+          saveLibrary(items);
+          renderLibrary();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+
+        if (target.classList.contains('delete-btn')) {
+          const items = loadLibrary().filter((entry) => entry.id !== target.dataset.id);
+          saveLibrary(items);
+          renderLibrary();
+          return;
+        }
+
+        if (target.classList.contains('add-capability-btn')) {
+          const stage = target.dataset.stage;
+          const wrapper = target.closest('.library-card');
+          const input = wrapper.querySelector('.new-name-input');
+          const source = wrapper.querySelector('.new-source-select');
+          const name = (input.value || '').trim();
+          if (!name) {
+            input.focus();
+            return;
+          }
+
+          const items = loadLibrary();
+          items.push({
+            id: buildId(),
+            stage,
+            name,
+            source: source.value
+          });
+
+          saveLibrary(items);
+          renderLibrary();
+          return;
+        }
+      });
+
+      resetLibraryBtn.addEventListener('click', () => {
+        localStorage.setItem(LIBRARY_KEY, JSON.stringify(defaultLibrary));
+        renderLibrary();
+      });
+
+      renderLibrary();
+    </script>
+  </body>
+</html>

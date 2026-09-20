@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'ai-pdlc-tracker-demo-v1';
+const SCOPE_KEY = 'ai-pdlc-scope-v1';
 
 const stageOptions = [
   'Discover & Plan',
@@ -13,10 +14,15 @@ const stageOptions = [
 const defaultState = [
   {
     id: 'customer-research',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Product',
     stage: 'Discover & Plan',
     capability: 'Customer research',
     defaultPlacement: 'Team-Specific',
     override: '',
+    included: true,
+    selectionTier: 'Must have',
     currentMaturity: 2,
     targetMaturity: 4,
     timeSpent: 3,
@@ -29,10 +35,15 @@ const defaultState = [
   },
   {
     id: 'roadmap-prioritization',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Product',
     stage: 'Discover & Plan',
     capability: 'Roadmap prioritization',
     defaultPlacement: 'Hybrid',
     override: 'Central',
+    included: true,
+    selectionTier: 'Must have',
     currentMaturity: 2,
     targetMaturity: 4,
     timeSpent: 4,
@@ -45,10 +56,14 @@ const defaultState = [
   },
   {
     id: 'prd-drafting',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Engineering',
     stage: 'Define & Design',
     capability: 'PRD drafting',
     defaultPlacement: 'Central',
     override: '',
+    included: true,
     currentMaturity: 3,
     targetMaturity: 4,
     timeSpent: 3,
@@ -61,10 +76,15 @@ const defaultState = [
   },
   {
     id: 'architecture-design',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Engineering',
     stage: 'Define & Design',
     capability: 'Architecture & design reviews',
     defaultPlacement: 'Hybrid',
     override: 'Hybrid',
+    included: true,
+    selectionTier: 'Should have',
     currentMaturity: 2,
     targetMaturity: 4,
     timeSpent: 3,
@@ -77,10 +97,15 @@ const defaultState = [
   },
   {
     id: 'ai-coding',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Engineering',
     stage: 'Build & Validate',
     capability: 'AI-assisted coding',
     defaultPlacement: 'Team-Specific',
     override: '',
+    included: true,
+    selectionTier: 'Must have',
     currentMaturity: 3,
     targetMaturity: 5,
     timeSpent: 4,
@@ -93,10 +118,15 @@ const defaultState = [
   },
   {
     id: 'incident-triage',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Operations',
     stage: 'Operate, Support & Resilience',
     capability: 'Incident detection & management',
     defaultPlacement: 'Central',
     override: '',
+    included: true,
+    selectionTier: 'Must have',
     currentMaturity: 2,
     targetMaturity: 4,
     timeSpent: 4,
@@ -109,10 +139,15 @@ const defaultState = [
   },
   {
     id: 'customer-onboarding',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Delivery',
     stage: 'Release & Customer Adoption',
     capability: 'Customer onboarding & configuration',
     defaultPlacement: 'Hybrid',
     override: 'Team-Specific',
+    included: true,
+    selectionTier: 'Should have',
     currentMaturity: 2,
     targetMaturity: 4,
     timeSpent: 3,
@@ -125,10 +160,15 @@ const defaultState = [
   },
   {
     id: 'product-analytics',
+    org: 'X Team',
+    domain: 'Platform',
+    team: 'Product',
     stage: 'Learn & Optimize',
     capability: 'Product & usage analytics',
     defaultPlacement: 'Central',
     override: '',
+    included: true,
+    selectionTier: 'Should have',
     currentMaturity: 3,
     targetMaturity: 5,
     timeSpent: 3,
@@ -142,26 +182,59 @@ const defaultState = [
 ];
 
 const state = loadState();
+const scopeState = loadScope();
 const trackerBody = document.getElementById('trackerBody');
 const summaryGrid = document.getElementById('summaryGrid');
 const stageFilter = document.getElementById('stageFilter');
 const orgDomainInput = document.getElementById('orgDomain');
+const orgScopeSelect = document.getElementById('orgScopeSelect');
+const domainScopeSelect = document.getElementById('domainScopeSelect');
+const teamScopeSelect = document.getElementById('teamScopeSelect');
+const viewScopeSelect = document.getElementById('viewScopeSelect');
 const resetDataBtn = document.getElementById('resetDataBtn');
 const editorModal = document.getElementById('priorityEditor');
 const editorBody = document.getElementById('editorBody');
 const editorTitle = document.getElementById('editorTitle');
 const closeEditorBtn = document.getElementById('closeEditorBtn');
 
+function normalizeState(rows) {
+  return rows.map((row) => ({
+    ...row,
+    org: row.org || 'X Team',
+    domain: row.domain || 'Platform',
+    team: row.team || 'Product',
+    included: row.included ?? true,
+    selectionTier: row.selectionTier || 'Should have',
+    status: row.status || 'Not started'
+  }));
+}
+
+function loadScope() {
+  const saved = localStorage.getItem(SCOPE_KEY);
+  if (saved) {
+    try {
+      return { ...{ org: 'X Team', domain: 'All domains', team: 'All teams', view: 'Org roll-up' }, ...JSON.parse(saved) };
+    } catch (error) {
+      console.warn('Failed to parse saved scope state');
+    }
+  }
+  return { org: 'X Team', domain: 'All domains', team: 'All teams', view: 'Org roll-up' };
+}
+
+function saveScope() {
+  localStorage.setItem(SCOPE_KEY, JSON.stringify(scopeState));
+}
+
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
     try {
-      return JSON.parse(saved);
+      return normalizeState(JSON.parse(saved));
     } catch (error) {
       console.warn('Failed to parse saved tracker data');
     }
   }
-  return structuredClone(defaultState);
+  return normalizeState(structuredClone(defaultState));
 }
 
 function saveState() {
@@ -208,7 +281,7 @@ function getStatusClass(status) {
 }
 
 function renderSummary() {
-  const visible = getVisibleRows();
+  const visible = getVisibleRows().filter((row) => row.included !== false);
   const avgMaturity = visible.length
     ? (visible.reduce((sum, row) => sum + Number(row.currentMaturity), 0) / visible.length).toFixed(1)
     : '0.0';
@@ -216,6 +289,12 @@ function renderSummary() {
   const highPriorityCount = visible.filter((row) => computePriority(row) >= 120).length;
   const centralCount = visible.filter((row) => getEffectivePlacement(row) === 'Central').length;
   const gapCount = visible.filter((row) => row.targetMaturity > row.currentMaturity).length;
+
+  const scopeSummary = document.getElementById('scopeSummary');
+  const scopeLabel = `${scopeState.org} / ${scopeState.domain} / ${scopeState.team} / ${scopeState.view}`;
+  if (scopeSummary) {
+    scopeSummary.textContent = `Scope: ${scopeLabel}`;
+  }
 
   const cards = [
     { label: 'Average maturity', value: avgMaturity, trend: 'Current org view' },
@@ -246,17 +325,63 @@ function renderStageFilter() {
 
 function getVisibleRows() {
   const selected = stageFilter.value;
-  if (selected === 'All') {
-    return state;
-  }
-  return state.filter((row) => row.stage === selected);
+  let rows = selected === 'All' ? state : state.filter((row) => row.stage === selected);
+
+  rows = rows.filter((row) => {
+    const orgMatch = scopeState.org === 'All orgs' || row.org === scopeState.org || scopeState.org === 'All orgs';
+    const domainMatch = scopeState.domain === 'All domains' || row.domain === scopeState.domain;
+    const teamMatch = scopeState.team === 'All teams' || row.team === scopeState.team;
+    return orgMatch && domainMatch && teamMatch;
+  });
+
+  return rows;
+}
+
+function renderScopeControls() {
+  const orgs = ['X Team', 'All orgs'];
+  const domains = ['All domains', 'Platform', 'Customer', 'Operations'];
+  const teams = ['All teams', 'Product', 'Engineering', 'Operations', 'Delivery'];
+
+  orgScopeSelect.innerHTML = orgs.map((value) => `<option value="${value}" ${value === scopeState.org ? 'selected' : ''}>${value}</option>`).join('');
+  domainScopeSelect.innerHTML = domains.map((value) => `<option value="${value}" ${value === scopeState.domain ? 'selected' : ''}>${value}</option>`).join('');
+  teamScopeSelect.innerHTML = teams.map((value) => `<option value="${value}" ${value === scopeState.team ? 'selected' : ''}>${value}</option>`).join('');
+  viewScopeSelect.innerHTML = ['Org roll-up', 'Team view', 'Capability library'].map((value) => `<option value="${value}" ${value === scopeState.view ? 'selected' : ''}>${value}</option>`).join('');
+}
+
+function renderHeatmap() {
+  const heatmapGrid = document.getElementById('heatmapGrid');
+  const stages = stageOptions;
+  const levels = ['L1', 'L2', 'L3', 'L4', 'L5'];
+  const cells = [];
+
+  cells.push('<div class="heatmap-header">Stage</div>');
+  levels.forEach((label) => cells.push(`<div class="heatmap-header">${label}</div>`));
+
+  stages.forEach((stage) => {
+    cells.push(`<div class="heatmap-stage">${stage}</div>`);
+    levels.forEach((level) => {
+      const row = state.filter((item) => item.stage === stage && item.included !== false);
+      const levelMatches = row.filter((item) => Number(item.currentMaturity) === Number(level.replace('L', ''))).length;
+      const value = levelMatches > 0 ? `${levelMatches}` : '—';
+      const className = levelMatches > 0 ? `heatmap-cell level-${Number(level.replace('L', ''))}` : 'heatmap-cell';
+      cells.push(`<div class="${className}">${value}</div>`);
+    });
+  });
+
+  heatmapGrid.innerHTML = cells.join('');
 }
 
 function handleFieldChange(id, field, value) {
   const item = state.find((row) => row.id === id);
   if (!item) return;
 
-  item[field] = field === 'currentMaturity' || field === 'targetMaturity' ? Number(value) : value;
+  if (field === 'included') {
+    item[field] = value === 'true';
+  } else if (field === 'selectionTier') {
+    item[field] = value;
+  } else {
+    item[field] = field === 'currentMaturity' || field === 'targetMaturity' || field === 'timeSpent' || field === 'frequency' || field === 'aiPotential' || field === 'scalability' || field === 'risk' || field === 'feasibility' ? Number(value) : value;
+  }
   saveState();
   render();
 }
@@ -270,7 +395,7 @@ function renderTable() {
       const priority = computePriority(item);
       const tier = getPriorityTier(priority);
       const gap = item.targetMaturity - item.currentMaturity;
-      const status = gap <= 0 ? 'Scaled' : (priority >= 120 ? 'Piloting' : 'Not started');
+      const status = item.status || 'Not started';
 
       return `
         <tr>
@@ -305,13 +430,32 @@ function renderTable() {
           </td>
           <td>${gap > 0 ? '+' + gap : gap}</td>
           <td>
+            <select data-id="${item.id}" data-field="included">
+              <option value="true" ${item.included !== false ? 'selected' : ''}>Included</option>
+              <option value="false" ${item.included === false ? 'selected' : ''}>N/A</option>
+            </select>
+          </td>
+          <td>
+            <select data-id="${item.id}" data-field="selectionTier">
+              ${['Must have', 'Should have', 'Optional']
+                .map((value) => `<option value="${value}" ${value === (item.selectionTier || 'Should have') ? 'selected' : ''}>${value}</option>`)
+                .join('')}
+            </select>
+          </td>
+          <td>
             <button class="priority-button" data-action="edit-priority" data-id="${item.id}">
               <strong>${priority}</strong>
               <span>${tier}</span>
             </button>
           </td>
           <td><span class="muted">See inputs</span></td>
-          <td><span class="status-pill ${getStatusClass(status)}">${status}</span></td>
+          <td>
+            <select data-id="${item.id}" data-field="status">
+              ${['Not started', 'Piloting', 'Scaled']
+                .map((value) => `<option value="${value}" ${value === status ? 'selected' : ''}>${value}</option>`)
+                .join('')}
+            </select>
+          </td>
           <td>${item.notes}</td>
         </tr>
       `;
@@ -401,18 +545,40 @@ window.addEventListener('click', (event) => {
 });
 
 function render() {
+  renderScopeControls();
   renderSummary();
+  renderHeatmap();
   renderTable();
 }
 
-stageFilter.addEventListener('change', renderSummary);
+stageFilter.addEventListener('change', render);
+orgScopeSelect.addEventListener('change', (event) => {
+  scopeState.org = event.target.value;
+  saveScope();
+  render();
+});
+domainScopeSelect.addEventListener('change', (event) => {
+  scopeState.domain = event.target.value;
+  saveScope();
+  render();
+});
+teamScopeSelect.addEventListener('change', (event) => {
+  scopeState.team = event.target.value;
+  saveScope();
+  render();
+});
+viewScopeSelect.addEventListener('change', (event) => {
+  scopeState.view = event.target.value;
+  saveScope();
+  render();
+});
 orgDomainInput.addEventListener('input', () => {
   document.title = `${orgDomainInput.value || 'AI-Native PDLC'} Tracker`;
 });
 
 resetDataBtn.addEventListener('click', () => {
   localStorage.removeItem(STORAGE_KEY);
-  state.splice(0, state.length, ...structuredClone(defaultState));
+  state.splice(0, state.length, ...normalizeState(structuredClone(defaultState)));
   saveState();
   render();
 });
