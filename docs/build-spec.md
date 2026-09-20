@@ -18,6 +18,7 @@ Leaders use this at the **leader level**, not split by profession: one leader sc
 - **Capability library**: the editable catalog of capabilities grouped by PDLC stage; allows org-default capabilities and team-custom capabilities to coexist, so there is a shared baseline and room for local variation.
 - **Scope selector**: a top-level filter for Org / Domain / Team / View so leaders can look at the org roll-up, a team slice, or a specific domain without mixing data together.
 - **AI Opportunity Canvas**: the structured narrative for any capability: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
+- **Outcome metrics**: the actual leading and lagging measures that determine whether a capability is improving real work outcomes (cycle time, quality, customer experience, resilience, throughput, and capacity), not just whether AI usage is increasing.
 - **Playbook**: the full transformation method behind the tracker — not only a maturity model. It should clearly guide a leader from mapping the PDLC to prioritizing, standardizing, automating, and measuring end-to-end outcomes.
 
 ---
@@ -240,6 +241,8 @@ The tool should be built as a playbook + tracker, not just a maturity scorecard.
 1. **Executive layer** — the fast, leadership-friendly heatmap across the 7 summary stages (Discover & Plan, Define & Design, Build & Validate, Release & Customer Adoption, Operate, Support & Resilience, Learn & Optimize, Lead & Run the Org). This is the first screen and should be visually clean and quick to consume.
 2. **Operational layer** — the fuller PDLC capability atlas used to identify work, bottlenecks, and AI opportunity end-to-end. This layer is more detailed and can span the full lifecycle: discover, strategy, define, design, build, validate, release, adopt, operate, support, incident, learn.
 
+The system should also make the transformation path explicit: diagnose the capability gap, prioritize the highest-value opportunities, define the baseline and target state, launch a pilot, measure the real outcomes, and scale the workflow only once the evidence is strong. This is what turns AI experimentation into a systematic business capability transformation.
+
 The required views are:
 
 1. **Org-wide stage heatmap** — every Org/Domain × all 7 stages, colored by maturity gap and pain/opportunity (from Stage Pulse entries). This is the fast, comprehensive view.
@@ -251,7 +254,17 @@ The required views are:
 7. **Override-aware portal editing** — the UI must allow a leader to override a capability's placement from the default/computed value to Central, Hybrid, or Team-Specific, and should display the change as `default`, `override`, and `effective` values side by side.
 8. **AI Opportunity Canvas** — a standard form attached to each capability asking: job, artifact, inputs, bottlenecks, handoffs, rework, current maturity, standardization gap, automation opportunity, AI leverage, and human control points.
 
-### 4.1 Workbook structure recommendation
+### 4.1 Outcome-tracking metric framework
+
+The product is not trying to optimize for tool adoption alone. It is trying to improve the underlying business outcomes of the work being done across the PDLC. The metrics layer must therefore separate:
+
+- **Leading indicators**: maturity movement, priority distribution, coverage, capability-level baseline-to-target gap, pilot-to-scale conversion.
+- **Lagging indicators**: cycle time reduction, defect reduction, faster ticket resolution, CX lift, incident MTTR reduction, capacity released for higher-value work.
+- **Outcome proof**: before/after values captured in the capability record (`baseline` vs `result`) that show whether an AI-enabled workflow actually improved the work.
+
+This is the heart of the transformation narrative: do we materially improve the business problem, or are we simply using AI in more places without measurable operational gain?
+
+### 4.2 Workbook structure recommendation
 
 To keep the tool practical and reusable, the spreadsheet/app should be organized into multiple tabs rather than a single giant grid:
 
