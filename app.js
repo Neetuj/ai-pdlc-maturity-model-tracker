@@ -205,7 +205,7 @@ function normalizeState(rows) {
     team: row.team || 'Product',
     included: row.included ?? true,
     selectionTier: row.selectionTier || 'Should have',
-    status: row.status || 'Not started'
+    status: row.status || 'Not assessed'
   }));
 }
 
@@ -282,13 +282,14 @@ function getStatusClass(status) {
 
 function renderSummary() {
   const visible = getVisibleRows().filter((row) => row.included !== false);
-  const avgMaturity = visible.length
-    ? (visible.reduce((sum, row) => sum + Number(row.currentMaturity), 0) / visible.length).toFixed(1)
+  const assessed = visible.filter((row) => row.status && row.status !== 'Not assessed' && row.status !== 'N/A');
+  const avgMaturity = assessed.length
+    ? (assessed.reduce((sum, row) => sum + Number(row.currentMaturity), 0) / assessed.length).toFixed(1)
     : '0.0';
 
-  const highPriorityCount = visible.filter((row) => computePriority(row) >= 120).length;
-  const centralCount = visible.filter((row) => getEffectivePlacement(row) === 'Central').length;
-  const gapCount = visible.filter((row) => row.targetMaturity > row.currentMaturity).length;
+  const highPriorityCount = assessed.filter((row) => computePriority(row) >= 120).length;
+  const centralCount = assessed.filter((row) => getEffectivePlacement(row) === 'Central').length;
+  const gapCount = assessed.filter((row) => row.targetMaturity > row.currentMaturity).length;
 
   const scopeSummary = document.getElementById('scopeSummary');
   const scopeLabel = `${scopeState.org} / ${scopeState.domain} / ${scopeState.team} / ${scopeState.view}`;
@@ -359,9 +360,16 @@ function renderHeatmap() {
 
   stages.forEach((stage) => {
     cells.push(`<div class="heatmap-stage">${stage}</div>`);
+    const relevantRows = state.filter((item) => item.stage === stage && item.included !== false);
+    const assessedRows = relevantRows.filter((item) => item.status && item.status !== 'Not assessed' && item.status !== 'N/A');
+
+    if (assessedRows.length === 0) {
+      levels.forEach(() => cells.push('<div class="heatmap-cell no-data">NA</div>'));
+      return;
+    }
+
     levels.forEach((level) => {
-      const row = state.filter((item) => item.stage === stage && item.included !== false);
-      const levelMatches = row.filter((item) => Number(item.currentMaturity) === Number(level.replace('L', ''))).length;
+      const levelMatches = assessedRows.filter((item) => Number(item.currentMaturity) === Number(level.replace('L', ''))).length;
       const value = levelMatches > 0 ? `${levelMatches}` : '—';
       const className = levelMatches > 0 ? `heatmap-cell level-${Number(level.replace('L', ''))}` : 'heatmap-cell';
       cells.push(`<div class="${className}">${value}</div>`);
@@ -451,7 +459,7 @@ function renderTable() {
           <td><span class="muted">See inputs</span></td>
           <td>
             <select data-id="${item.id}" data-field="status">
-              ${['Not started', 'Piloting', 'Scaled']
+              ${['Not assessed', 'Not started', 'Piloting', 'Scaled', 'Deprioritized', 'N/A']
                 .map((value) => `<option value="${value}" ${value === status ? 'selected' : ''}>${value}</option>`)
                 .join('')}
             </select>

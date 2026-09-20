@@ -69,6 +69,22 @@ Dwight leads the service operations business unit, covering service continuity, 
 
 Angela leads the risk, controls, and compliance org. That includes governance, policy, audit, vendor oversight, and risk management functions. Her leadership scope spans controls and operational safeguards across the enterprise, not just a single technical specialty.
 
+## Sample org heatmap from the case study
+
+The tracker should default to a neutral heatmap state for every stage until the leader has reviewed a capability. In this example, the heatmap reflects a mix of assessed and unassessed areas. The gray cells indicate that a capability has not yet been reviewed; the colored cells indicate that the org has already assessed the capability and assigned a maturity level.
+
+| Stage | Heatmap status | Interpretation |
+| --- | --- | --- |
+| Discover & Plan | Gray / partially assessed | Some planning capabilities were reviewed, but the rest remains unassessed |
+| Define & Design | Gray / partially assessed | Key design and PRD work is known, but not all areas have been evaluated |
+| Build & Validate | Yellow / active assessment | AI-assisted coding and test automation are already in scope |
+| Release & Customer Adoption | Gray / limited signal | Customer onboarding is active, but a broader release view remains under review |
+| Operate, Support & Resilience | Yellow / active assessment | Incident detection and operational service capabilities are already being evaluated |
+| Learn & Optimize | Gray / emerging view | Some analytics work is known, but the full learning loop is still incomplete |
+| Lead & Run the Org | Gray / default baseline | Leadership and governance mechanics are not yet fully reviewed |
+
+This is exactly how the heatmap should behave in the product: the default state is not “failed or weak,” it is simply “not assessed yet.” The heatmap updates as the leader scores the relevant capabilities and moves from a neutral baseline into an active operating picture.
+
 ## Org-level roll-up
 
 Michael sees the aggregate view, not a fragmented collection of team responses. The tracker consolidates the assessment into a clearer operating picture.

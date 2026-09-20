@@ -253,6 +253,12 @@ button {
   color: var(--ink);
 }
 
+.heatmap-cell.no-data {
+  background: #eef2f6;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .heatmap-cell.level-1 { background: #f8d7d7; }
 .heatmap-cell.level-2 { background: #fef1cd; }
 .heatmap-cell.level-3 { background: #fef7d2; }
@@ -410,6 +416,12 @@ tbody tr:hover {
 
 .status-pill.not-started {
   background: #f5f7fa;
+  color: var(--muted);
+}
+
+.status-pill.not-assessed,
+.status-pill.n-a {
+  background: #eef2f6;
   color: var(--muted);
 }
 
