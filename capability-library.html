@@ -94,23 +94,6 @@
         background: #fff;
       }
 
-      .source-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 11px;
-        font-weight: 700;
-        padding: 6px 8px;
-        border-radius: 999px;
-        background: #edf3ff;
-        color: #2556d9;
-      }
-
-      .source-pill.team {
-        background: #fff1e6;
-        color: #a85900;
-      }
-
       .delete-btn,
       .add-btn {
         width: 32px;
@@ -242,6 +225,13 @@
         { id: 'lead-3', stage: 'Lead & Run the Org', name: 'Vendor management', source: 'Team custom' }
       ];
 
+      function cloneLibraryData(value) {
+        if (typeof structuredClone === 'function') {
+          return structuredClone(value);
+        }
+        return JSON.parse(JSON.stringify(value));
+      }
+
       const libraryGrid = document.getElementById('libraryGrid');
       const resetLibraryBtn = document.getElementById('resetLibraryBtn');
 
@@ -249,19 +239,19 @@
         const saved = localStorage.getItem(LIBRARY_KEY);
         if (!saved) {
           localStorage.setItem(LIBRARY_KEY, JSON.stringify(defaultLibrary));
-          return structuredClone(defaultLibrary);
+          return cloneLibraryData(defaultLibrary);
         }
 
         try {
           const parsed = JSON.parse(saved);
           if (!Array.isArray(parsed) || parsed.length === 0) {
-            return structuredClone(defaultLibrary);
+            return cloneLibraryData(defaultLibrary);
           }
           return parsed;
         } catch (error) {
           console.warn('Unable to parse library state; resetting to defaults.');
           localStorage.setItem(LIBRARY_KEY, JSON.stringify(defaultLibrary));
-          return structuredClone(defaultLibrary);
+          return cloneLibraryData(defaultLibrary);
         }
       }
 
